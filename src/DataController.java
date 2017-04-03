@@ -29,7 +29,18 @@ public class DataController {
             return ListPath(goal); // add the goal to the path list
         }
 
+        for (int i = 0; i > start.new_neighbors.size(); i++ ){ //check neighbors for smallest heuristic
+            long j = 100000;
+            start.new_neighbors.get(i).cost = start.new_neighbors.get(i).cost + 1;
 
+            if(start.new_neighbors.get(i).Heuristic(goal)<j){
+                j = start.new_neighbors.get(i).Heuristic(goal);
+            }
+            long ManHatten_distance = start.new_neighbors.get(i).Heuristic(goal);
+
+
+
+        }
         return null;
     }
 

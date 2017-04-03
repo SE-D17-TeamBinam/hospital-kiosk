@@ -2,6 +2,7 @@
 import java.util.ArrayList;
 import java.util.Dictionary;
 import java.util.List;
+import java.util.PriorityQueue;
 
 /**
  * Created by Alberto on 3/30/2017.
@@ -20,8 +21,9 @@ public class DataController {
     }
 
     public ListNodes Astar (Node start, Node goal){ //A* algorithm to find efficient path
-        List <Node> visited = new ArrayList<Node>();
-        List <Node> possible = new ArrayList<Node>();
+        PriorityQueue<Node> visited = new PriorityQueue<Node>();
+        PriorityQueue <Node> possible = new PriorityQueue<Node>();
+        Node next = null;
 
         visited.add(start); //adds the start to visited.
 
@@ -29,19 +31,27 @@ public class DataController {
             return ListPath(goal); // add the goal to the path list
         }
 
-        for (int i = 0; i > start.new_neighbors.size(); i++ ){ //check neighbors for smallest heuristic
-            long j = 100000;
-            start.new_neighbors.get(i).cost = start.new_neighbors.get(i).cost + 1;
+        for (int i = 0; i > start.neighbors.size(); i++ ){ //check neighbors for smallest heuristic
 
-            if(start.new_neighbors.get(i).Heuristic(goal)<j){
-                j = start.new_neighbors.get(i).Heuristic(goal);
+            start.neighbors.get(i).cost = 1;
+            long ManHatten_distance = start.neighbors.get(i).Heuristic(goal);
+            long total_cost = ManHatten_distance +  start.neighbors.get(i).cost;
+
+            long j = 200000;
+            if(total_cost<j){
+
+                next = start.neighbors.get(i);
+                j = total_cost;
+
             }
-            long ManHatten_distance = start.new_neighbors.get(i).Heuristic(goal);
-
-
+            possible.add(start.neighbors.get(i));
 
         }
-        return null;
+
+        possible.remove(next); // removes next node to check from possible
+
+        next = Funneling(start, goal, visited, possible, start.cost); //starts funneling
+        return ListPath(next); //sends goal to create a list based on parents
     }
 
     public ListNodes DFS (Node start, Node goal){
@@ -52,6 +62,43 @@ public class DataController {
     }
 
     //Helpers
+    public  Node Funneling(Node start, Node goal, PriorityQueue<Node> visited, PriorityQueue<Node> possible, int cost){
+        Node next = null;
+
+        visited.add(start); //adds the start to visited.
+
+        if(start == goal){  //is the start and the goal in the same location?
+            return goal; // add the goal to the path list
+        }
+        else if(possible.isEmpty()){
+            throw new Exception();
+        }
+
+        for (int i = 0; i > start.neighbors.size(); i++ ){ //check neighbors for smallest heuristic
+
+            start.neighbors.get(i).cost = start.cost +1;
+
+            long ManHatten_distance = start.neighbors.get(i).Heuristic(goal);
+            long total_cost = ManHatten_distance +  start.neighbors.get(i).cost;
+
+            long j = 200000;
+            if((total_cost<j)&& !(visited.contains(start))){
+
+                next = start.neighbors.get(i);
+                j = total_cost;
+
+            }
+            if(!(possible.contains(start.neighbors.get(i)))){ //makes sure the possible list doesnt
+                                                                //have the node
+                possible.add(start.neighbors.get(i));   //adds it to possible list
+            }
+        }
+
+        possible.remove(next); //removes new node from possible
+
+        next = Funneling(start, goal, visited, possible, start.cost);
+        return goal;
+    }
     public ListNodes ListPath(Node destination){    //ceate a path list by reading parents
 
         ListNodes path = new ListNodes();    //listNode as path. in theory, in reverse order

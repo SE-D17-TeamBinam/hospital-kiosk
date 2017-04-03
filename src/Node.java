@@ -9,20 +9,17 @@ public class Node {
     long xCoord;    //X coordinate
     long yCoord;    //Y coordinate
     String id;      //Name of the Node
-    public static List <Node> new_neighbors;
-    private static HashMap<String, Node> neighbors;    //HashMap of all of the neighbors, assigned by name
+    public static List <Node> neighbors;
     Node parent;
     int cost;
 
     //Constructor
-    public void Node(long xCoord, long yCoord, String id, HashMap< String, Node> neighbors,
-                     List <Node> new_neighbors){
+    public void Node(long xCoord, long yCoord, String id, List <Node> new_neighbors){
     this.xCoord = xCoord;
     this.yCoord = yCoord;
     this.id = id;
-    this.neighbors = neighbors;
     this.parent = null;
-    this.new_neighbors = new_neighbors;
+    this.neighbors = new_neighbors;
     this.cost = 0;
     }
 

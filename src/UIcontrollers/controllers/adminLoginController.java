@@ -1,9 +1,8 @@
-package controllers;
+package UIControllers.controllers;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -12,7 +11,7 @@ import javafx.stage.Stage;
  */
 
 
-public class adminLoginController extends centralController implements Initializable {
+public class adminLoginController extends centralUIController implements Initializable {
 
   // define all ui elements
   @FXML
@@ -26,7 +25,7 @@ public class adminLoginController extends centralController implements Initializ
     Stage primaryStage = (Stage) AdminLogin.getScene().getWindow();
     // credential check
     try {
-      loadScene(primaryStage, "../fxmls/MapScene.fxml");
+      loadScene(primaryStage, "/MapScene.fxml");
     } catch (Exception e) {
       System.out.println("Cannot load map view");
       e.printStackTrace();
@@ -36,7 +35,7 @@ public class adminLoginController extends centralController implements Initializ
   public void back () {
     Stage primaryStage = (Stage) AdminLogin.getScene().getWindow();
     try {
-      startUI(primaryStage);
+      restartUI(primaryStage);
     } catch (Exception e) {
       System.out.println("Cannot load main menu");
       e.printStackTrace();

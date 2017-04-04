@@ -1,11 +1,8 @@
-package controllers;
+package UIControllers.controllers;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -13,7 +10,7 @@ import javafx.stage.Stage;
  * Created by Leon Zhang on 2017/4/1.
  */
 
-public class detailMenuController extends  centralController implements Initializable {
+public class detailMenuController extends centralUIController implements Initializable {
   // define all ui elements
   @FXML
   private Pane DetailMenu; // Value injected by FXMLLoader
@@ -26,7 +23,7 @@ public class detailMenuController extends  centralController implements Initiali
 
   public void quit () {
     try {
-      startUI(primaryStage);
+      restartUI(primaryStage);
     } catch (Exception e) {
       System.out.println("Cannot load main menu");
       e.printStackTrace();
@@ -35,7 +32,7 @@ public class detailMenuController extends  centralController implements Initiali
 
   public void back () {
     try {
-      loadScene(primaryStage, "../fxmls/SearchMenu.fxml");
+      loadScene(primaryStage, "/SearchMenu.fxml");
     } catch (Exception e) {
       System.out.println("Cannot load search menu");
       e.printStackTrace();
@@ -44,7 +41,7 @@ public class detailMenuController extends  centralController implements Initiali
 
   public void gotoMap () {
     try {
-      loadScene(primaryStage, "../fxmls/MapScene.fxml");
+      loadScene(primaryStage, "/MapScene.fxml");
     } catch (Exception e) {
       System.out.println("Cannot load map view");
       e.printStackTrace();

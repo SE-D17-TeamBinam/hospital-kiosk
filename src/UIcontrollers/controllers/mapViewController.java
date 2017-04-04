@@ -1,32 +1,21 @@
-package controllers;
-import com.sun.javafx.scene.paint.GradientUtils;
-import java.awt.Dimension;
+package UIControllers.controllers;
 import java.awt.Point;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
-import javafx.geometry.Rectangle2D;
-import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.ScrollEvent;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.CornerRadii;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 /**
  * Created by Leon Zhang on 2017/4/1.
  */
-public class mapViewController extends centralController implements Initializable {
+public class mapViewController extends centralUIController implements Initializable {
   // define all ui elements
 
   @FXML
@@ -64,7 +53,7 @@ public class mapViewController extends centralController implements Initializabl
   public void back(){
     Stage primaryStage = (Stage) floorChoiceBox.getScene().getWindow();
     try {
-      startUI(primaryStage);
+      restartUI(primaryStage);
     } catch (Exception e) {
       System.out.println("Cannot load main menu");
       e.printStackTrace();
@@ -72,7 +61,6 @@ public class mapViewController extends centralController implements Initializabl
   }
 
   private void initializeMapImage() {
-    mapImage.setTranslateZ(-5); // Push the map into the background
     mapImage.setFitHeight(mapImage.getImage().getHeight());
     mapImage.setFitWidth(mapImage.getImage().getWidth());
     mapImageWtHRatio = mapImage.getFitWidth() / mapImage.getFitHeight();
@@ -153,7 +141,7 @@ public class mapViewController extends centralController implements Initializabl
           public void changed(ObservableValue ov, Number old_value, Number new_value) {
             // Change the image that's being displayed when the input changes
             Image new_img = new Image(
-                "/images/floor_plans/" + (floorChoiceBox.getItems().get((int) new_value))
+                "/floor_plans/" + (floorChoiceBox.getItems().get((int) new_value))
                     + "floor.png");
             mapImage.setImage(new_img);
           }

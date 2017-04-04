@@ -1,4 +1,4 @@
-package controllers;
+package UIControllers.controllers;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -6,22 +6,21 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 
-public class centralController  {
+public class centralUIController {
   /* Type of map to show when mapView is displayed
     1 for interactive map
     2 for directory map
     3 for admin map
    */
-  protected int mapViewFlag = 0;
+  protected static int mapViewFlag = 0;
   /*
   @param primaryStage: The main stage of the application
   Set the stage to the initial scene
    */
-  public void startUI (Stage primaryStage) throws Exception {
-    loadScene(primaryStage, "../fxmls/MainMenu.fxml");
+  public void restartUI(Stage primaryStage) throws Exception {
+    loadScene(primaryStage, "/MainMenu.fxml");
     primaryStage.setTitle("Faulkner Hospital Kiosk");
   }
-
   /*
   @param primaryStage: The main stage of the application
   @param fxmlpath: the file path of the fxml file to be loaded

@@ -11,18 +11,18 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750" prefWidth="1300" style="-fx-background-color: #FFFFFF;"
   xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1"
-  fx:controller="controllers.adminLoginController">
+  fx:controller="UIControllers.controllers.adminLoginController">
    <children>
       <Pane fx:id="AdminLogin" id="AdminLogin" prefHeight="750" prefWidth="1300" style="-fx-background-color: transparent;">
          <children>
             <ImageView id="AdminBack" fitHeight="62.0" fitWidth="130.0" layoutX="14.0" layoutY="14.0" onMouseClicked="#back">
                <image>
-                  <Image url="@../images/icons/backtomain.jpg" />
+                  <Image url="@icons/backtomain.jpg" />
                </image>
             </ImageView>
             <ImageView id="AdminLogo" fitHeight="51.0" fitWidth="200.0" layoutX="200.0" layoutY="20.0">
                <image>
-                  <Image url="@../images/icons/faulkner.gif" />
+                  <Image url="@icons/faulkner.gif" />
                </image>
             </ImageView>
             <Label id="UserName" layoutX="158.0" layoutY="157.0" text="Admin" />

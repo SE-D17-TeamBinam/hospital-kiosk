@@ -50,7 +50,7 @@ this.floors = floors;
   }
 
     possible.remove(next); // removes next node to check from possible
-    next = Funneling(next, goal, visited, possible, start.cost); //starts funneling
+    next = AFunneling(next, goal, visited, possible, start.cost); //starts funneling
     return ListPath(next); //sends goal to create a list based on parents
   }
 
@@ -85,7 +85,7 @@ this.floors = floors;
   }
 
   //Helpers
-  public  Node Funneling(Node start, Node goal, PriorityQueue<Node> visited, PriorityQueue<Node> possible, int cost){
+  public  Node AFunneling(Node start, Node goal, PriorityQueue<Node> visited, PriorityQueue<Node> possible, int cost){
   Node next = null;
 
   visited.add(start); //adds the start to visited.

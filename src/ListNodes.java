@@ -15,6 +15,10 @@ public class ListNodes {
   private void sort(){}
 
   //Helpers
+  public ArrayList<Node> getNodes(){
+    return this.nodes;
+  } //Getter
+
   public void include(Node n){
     this.nodes.add(n);  //adds node to ArrayList Nodes
   }

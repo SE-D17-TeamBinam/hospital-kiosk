@@ -6,7 +6,8 @@ import java.util.ArrayList;
 public class Point {
   int xCoord;    //X coordinate
   int yCoord;    //Y coordinate
-  String id;      //Name of the Point
+  String name;  //Name of the room
+  String id;      //Unique Identifier
   int floor;
   public static ArrayList<Point> neighbors;
   //Attributes For A* only below.
@@ -14,9 +15,10 @@ public class Point {
   int cost;
 
     //Constructor
-  public Point(int xCoord, int yCoord, String id, ArrayList <Point> new_neighbors, int floor){
+  public Point(int xCoord, int yCoord, String name, String id, ArrayList <Point> new_neighbors, int floor){
   this.xCoord = xCoord;
   this.yCoord = yCoord;
+  this.name = name;
   this.id = id;
   this.parent = null;
   this.neighbors = new_neighbors;

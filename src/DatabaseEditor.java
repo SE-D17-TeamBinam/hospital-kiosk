@@ -47,7 +47,7 @@ public class DatabaseEditor {
   boolean addPhysicianLocation(String first_name, String last_name, String title,
       String location_name) {
     dbc.send_Command(
-        "insert into HC_Location (location_id, physician_id) values (select pid from physician where first_name = \""
+        "insert into P_Location (location_id, physician_id) values (select pid from physician where first_name = \""
             + first_name + "\" and last_name = \"" + last_name + "\" and title = \"" + title
             + "\", select lid from location where name = \"" + location_name + "\");\n");
     return true;
@@ -56,7 +56,7 @@ public class DatabaseEditor {
   boolean removePhysicianLocation(String first_name, String last_name, String title,
       String location_name) {
     dbc.send_Command(
-        "delete from HC_Location (location_id, physician_id) values (select pid from physician where first_name = \""
+        "delete from P_Location (location_id, physician_id) values (select pid from physician where first_name = \""
             + first_name + "\" and last_name = \"" + last_name + "\" and title = \"" + title
             + "\", select lid from location where name = \"" + location_name + "\");\n");
     return true;

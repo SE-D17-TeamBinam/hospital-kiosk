@@ -1,4 +1,5 @@
 import java.sql.*;
+import java.util.ArrayList;
 
 /**
  * Registers, Connects to, and sends commands to a database
@@ -27,27 +28,42 @@ public class DatabaseController{
     }
   }
 
-  ResultSet send_Command(String command){
+  public String[] Parser(String commands){
+    String[] SList;
+    SList = commands.split(";");
+    return SList;
+  }
+
+  public ArrayList<ResultSet> send_Command(String commands){
+    String command;
+    String[] cList = this.Parser(commands);
+    ArrayList<ResultSet> listrs =new ArrayList<ResultSet>();
+    int i;
     ResultSet rs;
-    try {
-      stmt = conn.createStatement();
-      rs = stmt.executeQuery(command);
-      return rs;
-
-    }
-    catch (SQLException e){
-      System.out.println("Error Querying, Trying Execute...");
+    for(i = 0;i < cList.length;i++) {
+      command = cList[i];
+      System.out.println("command:" + command);
       try {
-        stmt.execute(command);
-        System.out.println("Executed Successfully");
+        stmt = conn.createStatement();
+        rs = stmt.executeQuery(command);
+        listrs.add(rs);
+        //return rs;
 
+      } catch (SQLException e) {
+        System.out.println("Error Querying, Trying Execute...");
+        try {
+          stmt.execute(command);
+          //listrs.add(rs);
+          System.out.println("Executed Successfully");
+
+        } catch (SQLException e2) {
+          e.printStackTrace();
+          System.out.println("Query Error!");
+        }
       }
-      catch (SQLException e2){
-        e.printStackTrace();
-        System.out.println("Query Error!");
-      }
+
     }
-    return null;
+    return listrs;
   }
 
   private boolean registerDriver() throws ClassNotFoundException{

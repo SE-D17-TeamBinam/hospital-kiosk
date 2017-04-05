@@ -1,9 +1,9 @@
-package UIControllers.controllers;
+package UIControllers;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 /**
  * Created by Leon Zhang on 2017/4/1.
@@ -12,13 +12,13 @@ import javafx.stage.Stage;
 public class mainMenuController extends centralUIController implements Initializable {
   // define all ui elements
   @FXML
-  private AnchorPane MainMenuPane;
+  private Pane MainMenu;
 
   public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
   }
 
   public void gotoMap () {
-    Stage primaryStage = (Stage) MainMenuPane.getScene().getWindow();
+    Stage primaryStage = (Stage) MainMenu.getScene().getWindow();
     try {
       mapViewFlag = 3;
       loadScene(primaryStage, "/MapScene.fxml");
@@ -28,7 +28,7 @@ public class mainMenuController extends centralUIController implements Initializ
   }
 
   public void gotoSearch () {
-    Stage primaryStage = (Stage) MainMenuPane.getScene().getWindow();
+    Stage primaryStage = (Stage) MainMenu.getScene().getWindow();
     try {
       loadScene(primaryStage, "/SearchMenu.fxml");
     } catch (Exception e) {
@@ -36,7 +36,7 @@ public class mainMenuController extends centralUIController implements Initializ
   }
 
   public void gotoAdmin () {
-    Stage primaryStage = (Stage) MainMenuPane.getScene().getWindow();
+    Stage primaryStage = (Stage) MainMenu.getScene().getWindow();
     try {
       loadScene(primaryStage, "/AdminLogin.fxml");
     } catch (Exception e) {

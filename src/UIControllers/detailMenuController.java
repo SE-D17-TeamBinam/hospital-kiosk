@@ -1,4 +1,4 @@
-package UIControllers.controllers;
+package UIControllers;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;

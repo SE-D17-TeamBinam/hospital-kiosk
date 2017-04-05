@@ -1,6 +1,8 @@
-package UIControllers.controllers;
+package UIControllers;
 
+import Definitions.Physician;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -24,8 +26,13 @@ public class searchMenuController extends centralUIController implements Initial
     // actions of each ui element
   }
 
-  public void updateDirectory (List<String> directory){
-    ObservableList<String> listHC = FXCollections.observableList(directory);
+  public void updateDirectory (List<Physician> HCs){
+    ArrayList<String> list = new ArrayList<String>();
+    for (Physician doctor : HCs) {
+      String newDoc = doctor.getLastName() + ", " + doctor.getFirstName();
+      list.add(newDoc);
+    }
+    ObservableList<String> listHC = FXCollections.observableList(list);
     SearchDirectory.setItems(listHC);
   }
 

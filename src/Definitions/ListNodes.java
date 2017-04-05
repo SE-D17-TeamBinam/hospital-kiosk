@@ -1,4 +1,4 @@
-package UIControllers.definitions;
+package Definitions;
 
 /**
  * Created by Leon Zhang on 2017/4/2.

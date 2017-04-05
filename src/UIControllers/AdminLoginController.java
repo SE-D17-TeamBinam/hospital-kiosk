@@ -1,5 +1,6 @@
 package UIControllers;
 
+import org.Dictionary;
 import CredentialManager.CredentialManager;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -40,6 +41,11 @@ public class AdminLoginController extends CentralUIController implements Initial
 
   @Override
   public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
+    /* apply language configs */
+    System.out.println(currLang);
+    Dictionary d = new Dictionary();
+    AdminBack.setText(d.getString("Back", currLang));
+    AdminNameLabel.setText(d.getString("Username", currLang));
   }
 
   /**

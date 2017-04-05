@@ -11,6 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 /**
  * Created by Brandon on 4/4/2017.
  */
+/**
 public class DictionaryTest {
 
   public Dictionary dictionary;
@@ -18,7 +19,7 @@ public class DictionaryTest {
   public Entry entry2;
 
 
-  @BeforeEach
+  /**@/**BeforeEach
   public void setUp() {
 
     CentralController controller = new CentralController();
@@ -41,6 +42,7 @@ public class DictionaryTest {
   /**
    * Tests the String returned when given a language and a certain key.
    */
+  /**
   public void canGetStringTest() {
     assertEquals("English word for n.",dictionary.getString("n"));
   }
@@ -49,7 +51,7 @@ public class DictionaryTest {
   /**
    * Tests the String returned when given a language and a certain key.
    */
-  public void canGetStringTest2() {
+ /** public void canGetStringTest2() {
     assertEquals("English word for x.", dictionary.getString("x"));
   }
 
@@ -57,8 +59,9 @@ public class DictionaryTest {
   /**
    * Tests the String returned when a given key does not exist in the org.Dictionary's HashMap.
    */
-  public void keyDoesNotExist() {
+ /** public void keyDoesNotExist() {
     assertEquals("", dictionary.getString("This key doesn't exist."));
   }
 
 }
+*/

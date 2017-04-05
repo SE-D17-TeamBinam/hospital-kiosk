@@ -1,15 +1,15 @@
 package org;
 
-import java.util.Map;
+import java.util.HashMap;
 
 /**
  * Created by Brandon on 4/4/2017.
  */
 public class Entry {
 
-    public Map<Language, String> languageStringMap;
+    public HashMap<String, String> languageStringMap;
 
-    public Entry(Map<Language, String> languageStringMap){
+    public Entry(HashMap<String, String> languageStringMap){
       this.languageStringMap = languageStringMap;
     }
 
@@ -19,7 +19,7 @@ public class Entry {
      * @param language: The given language that the String is interpreted in.
      * @param string: The String that is displayed in the given org.Language.
      */
-    public void addString(Language language,String string){
+    public void addString(String language,String string){
         this.languageStringMap.put(language, string);
     }
 
@@ -29,7 +29,7 @@ public class Entry {
      * @param language: Specifies the org.Language that the String should be interpreted in.
      * @return: Returns the String in the specified org.Language.
      */
-    public String getString(Language language){
+    public String getString(String language){
         if(this.languageStringMap.containsKey(language)){
             return this.languageStringMap.get(language);
         } else {

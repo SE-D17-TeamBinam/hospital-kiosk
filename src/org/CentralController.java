@@ -15,6 +15,12 @@ public class CentralController {
   private CentralUIController uiController;
   public CentralController(){
   }
+  public Language getCurrLang () {
+    return this.currSession.currLang;
+  }
+  public void setCurrLang (Language L) {
+    this.currSession.currLang = L;
+  }
   public void startUI (Stage primaryStage) throws Exception {
     this.uiController = new CentralUIController();
     uiController.restartUI(primaryStage);

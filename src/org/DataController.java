@@ -1,8 +1,7 @@
+package org;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Dictionary;
-import java.util.PriorityQueue;
 //import Statements
 /**
  * @author ajnagal and aramirez2
@@ -107,11 +106,11 @@ this.floors = floors;
 
 //This Comment is code all wrong
 
-//  public ListPoints Astar (Point start, Point goal) throws Exception{ //A* algorithm to find efficient path
+//  public org.ListPoints Astar (org.Point start, org.Point goal) throws Exception{ //A* algorithm to find efficient path
 //    start.parent = null; //for finding a path
-//    ArrayList<Point> visited = new ArrayList<Point>();
-//    ArrayList<Point> possible = new ArrayList<Point>();
-//    Point next = new Point(0,0,"test","test",null,2);
+//    ArrayList<org.Point> visited = new ArrayList<org.Point>();
+//    ArrayList<org.Point> possible = new ArrayList<org.Point>();
+//    org.Point next = new org.Point(0,0,"test","test",null,2);
 //
 //    visited.add(start); //adds the start to visited.
 //
@@ -148,12 +147,12 @@ this.floors = floors;
 //    return ListPath(next); //sends goal to create a list based on parents
 //  }
 //
-//  public ListPoints DFS (Point start, Point goal){
+//  public org.ListPoints DFS (org.Point start, org.Point goal){
 //
 //    start.parent = null;
-//  Point next = null;
-//  PriorityQueue<Point> visited = new PriorityQueue<Point>();
-//  PriorityQueue<Point> possible = new PriorityQueue<Point>();
+//  org.Point next = null;
+//  PriorityQueue<org.Point> visited = new PriorityQueue<org.Point>();
+//  PriorityQueue<org.Point> possible = new PriorityQueue<org.Point>();
 //
 //  visited.add(start);
 //
@@ -181,9 +180,9 @@ this.floors = floors;
 //  }
 //
 //  //Helpers
-//  public Point AFunneling (Point start, Point goal, ArrayList<Point> visited,
-//      ArrayList<Point> possible, int cost) throws Exception{
-//    Point next = null;
+//  public org.Point AFunneling (org.Point start, org.Point goal, ArrayList<org.Point> visited,
+//      ArrayList<org.Point> possible, int cost) throws Exception{
+//    org.Point next = null;
 //    visited.add(start); //adds the start to visited.
 //
 //    if((start.xCoord == goal.xCoord) && (start.yCoord == goal.yCoord)){  //is the start and the goal in the same location?
@@ -222,14 +221,14 @@ this.floors = floors;
 //
 //  possible.remove(next); //removes new node from possible
 //  if(possible.isEmpty()){
-//      throw new NoPathException();
+//      throw new org.NoPathException();
 //    }
 //  next = AFunneling(start, goal, visited, possible, start.cost);
 //  return next;
 //  }
 //
-//  public Point DFSfunnel(Point start, Point goal, PriorityQueue<Point> visited, PriorityQueue<Point> possible){
-//  Point next = null;
+//  public org.Point DFSfunnel(org.Point start, org.Point goal, PriorityQueue<org.Point> visited, PriorityQueue<org.Point> possible){
+//  org.Point next = null;
 //
 //  visited.add(start);     //adds to visited
 //
@@ -279,8 +278,8 @@ this.floors = floors;
     return path;
   }
 //
-//  public Point FindNextBest(ArrayList<Point> NextBest, Point goal){
-//    Point next = null;
+//  public org.Point FindNextBest(ArrayList<org.Point> NextBest, org.Point goal){
+//    org.Point next = null;
 //    int j = 100000;
 //    for(int i = 0; i < NextBest.size(); i++){
 //      if(j<(NextBest.get(i).Distance(goal) + NextBest.get(i).cost)){

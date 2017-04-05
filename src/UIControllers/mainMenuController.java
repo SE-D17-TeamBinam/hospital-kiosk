@@ -9,7 +9,7 @@ import javafx.stage.Stage;
  * Created by Leon Zhang on 2017/4/1.
  */
 
-public class mainMenuController extends centralUIController implements Initializable {
+public class MainMenuController extends CentralUIController implements Initializable {
   // define all ui elements
   @FXML
   private Pane MainMenu;

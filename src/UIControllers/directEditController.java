@@ -8,7 +8,6 @@ import java.util.ResourceBundle;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
@@ -20,7 +19,7 @@ import javafx.stage.Stage;
 /**
  * Created by Leon Zhang on 4/4/2017.
  */
-public class directEditController extends centralUIController implements Initializable {
+public class DirectEditController extends CentralUIController implements Initializable {
   private int selectedHPIndex;
   private boolean locationShown;
   private Physician selectedHP = null;

@@ -6,7 +6,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 
-public class centralUIController {
+public class CentralUIController {
   /* Type of map to show when mapView is displayed
     1 for interactive map
     2 for directory map

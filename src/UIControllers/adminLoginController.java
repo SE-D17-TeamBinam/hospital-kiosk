@@ -15,7 +15,7 @@ import javafx.stage.Stage;
  */
 
 
-public class adminLoginController extends centralUIController implements Initializable {
+public class AdminLoginController extends CentralUIController implements Initializable {
 
   // define all ui elements
   @FXML

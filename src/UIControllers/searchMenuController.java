@@ -15,7 +15,7 @@ import javafx.stage.Stage;
 /**
  * Created by Leon Zhang on 2017/4/1.
  */
-public class searchMenuController extends centralUIController implements Initializable {
+public class SearchMenuController extends CentralUIController implements Initializable {
   // define all ui elements
   @FXML
   private ListView SearchDirectory;

@@ -5,6 +5,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -18,6 +19,12 @@ public class MainMenuController extends CentralUIController implements Initializ
   private Pane MainMenu;
   @FXML
   private ChoiceBox langBox;
+
+
+  @FXML
+  private Button MapButton;
+  @FXML
+  private Button SearchButton;
 
   public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
     chooseLang();

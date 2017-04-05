@@ -62,6 +62,21 @@ public class DatabaseEditor {
     return physicians;
   }
 
+  boolean updatePhysicians(ArrayList<Physician> ap) throws SQLException {
+    dbc.send_Command("truncate table Physician;");
+    int i;
+    for(i = 0;i < ap.size();i++){
+      this.addPhysician(ap.get(i).getFirstName(),ap.get(i).getLastName(),ap.get(i).getTitle());
+    }
+
+    return true;
+  }
+
+
+
+
+
+
   ///////////////////////////
   //////// Location /////////
   ///////////////////////////
@@ -77,6 +92,7 @@ public class DatabaseEditor {
     dbc.send_Command("delete from Location where name = '" + name + "')");
     return true;
   }
+
 
   ///////////////////////////
   //// Location - Service ///
@@ -139,6 +155,8 @@ public class DatabaseEditor {
 
   }
 
+
+
   ////////////////////////
   /////////Point/////////
   //////////////////////
@@ -147,7 +165,7 @@ public class DatabaseEditor {
     int cost = point.cost;
     int x = point.xCoord;
     int y = point.yCoord;
-    String id = point.id;
+    int id = point.id;
     int floor = point.floor;
     String name = point.name;
 
@@ -179,7 +197,7 @@ public class DatabaseEditor {
     int cost = point.cost;
     int x = point.xCoord;
     int y = point.yCoord;
-    String id = point.id;
+    int id = point.id;
     int floor = point.floor;
     String name = point.name;
 

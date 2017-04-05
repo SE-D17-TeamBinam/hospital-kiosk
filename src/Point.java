@@ -24,7 +24,7 @@ public class Point {
 
 
   //Constructor
-  public Point(int xCoord, int yCoord, String name, String id, ArrayList <Point> new_neighbors, int floor){
+  public Point(int xCoord, int yCoord, String name, int id, ArrayList <Point> new_neighbors, int floor){
     this.xCoord = xCoord;
     this.yCoord = yCoord;
     this.name = name;

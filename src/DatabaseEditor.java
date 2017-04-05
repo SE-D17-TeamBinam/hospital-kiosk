@@ -1,3 +1,7 @@
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
 /**
  * Database Editor Abstracts the SQL Away from the rest of the program by providing methods to add /
  * remove / edit elements of the database directly in java methods Created by Evan on 4/3/2017.
@@ -30,6 +34,21 @@ public class DatabaseEditor {
         "insert into physician (first_name, last_name, title) values (\"" + first_name + "\",\""
             + last_name + "\",\"" + title + "\")");
     return true;
+  }
+
+  ArrayList<Physician> getAllPhysicians() throws SQLException{
+    ArrayList<Physician> physicians = new ArrayList<Physician>();
+    ResultSet res = dbc.send_Command("select * from physician").get(0);
+    while (res.next()){
+      String first_name = res.getString("FIRST_NAME");
+      String last_name = res.getString("LAST_NAME");
+      String title = res.getString("TITLE");
+      long pid = res.getLong("PID");
+
+      Physician p = new Physician(first_name,last_name,title,pid,new ArrayList<Point>());
+      physicians.add(p);
+    }
+    return physicians;
   }
 
   ///////////////////////////

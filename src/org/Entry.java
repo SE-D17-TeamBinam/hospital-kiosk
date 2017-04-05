@@ -1,3 +1,5 @@
+package org;
+
 import java.util.Map;
 
 /**
@@ -12,26 +14,26 @@ public class Entry {
     }
 
     /**
-     * Adds a String for a Language to the languageStringMap for the Entry object.
+     * Adds a String for a org.Language to the languageStringMap for the org.Entry object.
      *
      * @param language: The given language that the String is interpreted in.
-     * @param string: The String that is displayed in the given Language.
+     * @param string: The String that is displayed in the given org.Language.
      */
     public void addString(Language language,String string){
         this.languageStringMap.put(language, string);
     }
 
     /**
-     * Gets the String given a Language to return in.
+     * Gets the String given a org.Language to return in.
      *
-     * @param language: Specifies the Language that the String should be interpreted in.
-     * @return: Returns the String in the specified Language.
+     * @param language: Specifies the org.Language that the String should be interpreted in.
+     * @return: Returns the String in the specified org.Language.
      */
     public String getString(Language language){
         if(this.languageStringMap.containsKey(language)){
             return this.languageStringMap.get(language);
         } else {
-            System.out.println("Language not found.");
+            System.out.println("org.Language not found.");
             return "";
         }
     }

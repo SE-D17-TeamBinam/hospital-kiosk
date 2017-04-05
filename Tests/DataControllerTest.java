@@ -7,7 +7,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
-import org.junit.jupiter.api.BeforeAll;
+import org.DataController;
+import org.ListPoints;
+import org.NoPathException;
+import org.Point;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -35,7 +38,7 @@ public class DataControllerTest {
     p3.neighbors.add(p2);
     p4.neighbors.add(p3);
   }
-
+/**
   @Test
   void aStarAttemptTest() throws Exception {
     ArrayList<Point> expectedList = new ArrayList<Point>();
@@ -87,25 +90,25 @@ public class DataControllerTest {
   void aStarExceptionTest(){
     assertThrows(NoPathException.class, ()-> data.Astar(p4,p5));
   }
-  /**  //List of Point-Empty
-   private ArrayList<Point> neigh = new ArrayList<Point>();
-   //Point 1
-   private Point point1 = new Point(42, 50, "A56", "A56", neigh, 4);
-   // Point 2
-   private Point point2 = new Point(0, -5, "Basement", "Base",
+  /**  //List of org.Point-Empty
+   private ArrayList<org.Point> neigh = new ArrayList<org.Point>();
+   //org.Point 1
+   private org.Point point1 = new org.Point(42, 50, "A56", "A56", neigh, 4);
+   // org.Point 2
+   private org.Point point2 = new org.Point(0, -5, "Basement", "Base",
    null, -1);
    //List of Points
-   private ArrayList<Point> neigh2 = new ArrayList<Point>();
+   private ArrayList<org.Point> neigh2 = new ArrayList<org.Point>();
    boolean f = neigh2.add(point2); //adds point2
 
-   // Point 3
-   private Point point3 = new Point(12, 30, "5th FLoor", "5a", neigh2, 5);
+   // org.Point 3
+   private org.Point point3 = new org.Point(12, 30, "5th FLoor", "5a", neigh2, 5);
    //List of Points 3
-   private ArrayList<Point> neigh3 = new ArrayList<Point>();
+   private ArrayList<org.Point> neigh3 = new ArrayList<org.Point>();
    boolean h = neigh3.add(point3); //adds point2
-   // Point 4
-   private Point point4 = new Point(5, 30, "5th FLoor", "5a", neigh3, 5);
-   //Point 2
+   // org.Point 4
+   private org.Point point4 = new org.Point(5, 30, "5th FLoor", "5a", neigh3, 5);
+   //org.Point 2
    boolean x = neigh.add(point3);
    */
 

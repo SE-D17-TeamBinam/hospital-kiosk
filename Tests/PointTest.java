@@ -8,7 +8,6 @@ import org.junit.jupiter.api.Test;
 public class PointTest {
   //List of node-Empty
   private ArrayList<Point> neigh = new ArrayList<Point>();
-  //Point 1
   private Point point1 = new Point( 42, 50, "A56",1, neigh, 4);
   // Point 2
   private Point point2 = new Point( 0, -5, "Basement", 0,

@@ -113,7 +113,7 @@ public class MapViewController extends CentralUIController implements Initializa
   private Definitions.Point pointFocus;
   private ArrayList<Definitions.Point> nodes = new ArrayList<Definitions.Point>();
   // List of points that are currently being displayed
-  // Note: "Point" refers to a graphical object being displayed, not a room for this project
+  // Note: "org.Point" refers to a graphical object being displayed, not a room for this project
   private ArrayList<javafx.scene.Node> currentlyDrawnNodes = new ArrayList<javafx.scene.Node>();
 
   // Line to provide visual feedback when drawing points
@@ -472,7 +472,6 @@ public class MapViewController extends CentralUIController implements Initializa
     if (mapViewFlag == 1) {
       return;
     }
-
     ObservableList<javafx.scene.Node> children = ((AnchorPane) mapImage.getParent()).getChildren();
 
     children.removeAll(currentlyDrawnNodes);

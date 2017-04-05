@@ -1,8 +1,11 @@
 package UIControllers;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 /**
@@ -13,8 +16,12 @@ public class MainMenuController extends CentralUIController implements Initializ
   // define all ui elements
   @FXML
   private Pane MainMenu;
+  @FXML
+  private ChoiceBox langBox;
 
   public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
+    //chooseLang();
+
   }
 
   public void gotoMap () {
@@ -42,5 +49,24 @@ public class MainMenuController extends CentralUIController implements Initializ
     } catch (Exception e) {
     }
   }
+
+  public void chooseLang() {
+    langBox.getItems().add("ENGLISH");
+    langBox.getItems().add("SPANISH");
+    langBox.getItems().add("PORTUGUESE");
+
+
+    langBox.getSelectionModel().select(0);
+
+    langBox.getSelectionModel().selectedIndexProperty().addListener(
+        new ChangeListener<Number>() {
+          public void changed(ObservableValue ov, Number old_value, Number new_value) {
+            // Change the language that's being displayed when the input changes
+            currLang = langBox.getSelectionModel().toString();
+
+          }
+        });
+  }
+
 
 }

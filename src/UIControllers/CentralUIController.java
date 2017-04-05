@@ -13,18 +13,19 @@ public class CentralUIController {
     3 for admin map
    */
   protected static int mapViewFlag = 0;
-  /*
-  @param primaryStage: The main stage of the application
-  Set the stage to the initial scene
+  protected static String currLang = "ENGLISH";
+  /**
+   * Set the stage to the initial scene (main menu)
+   * @parameter primaryStage: The main stage of the application
    */
   public void restartUI(Stage primaryStage) throws Exception {
     loadScene(primaryStage, "/MainMenu.fxml");
     primaryStage.setTitle("Faulkner Hospital Kiosk");
   }
-  /*
-  @param primaryStage: The main stage of the application
-  @param fxmlpath: the file path of the fxml file to be loaded
-  Set the stage to a scene by an fxml file
+  /**
+   * @parameter primaryStage: The main stage of the application
+   * @parameter fxmlpath: the file path of the fxml file to be loaded
+   * Set the stage to a scene by an fxml file
    */
   public void loadScene (Stage primaryStage, String fxmlpath) throws Exception {
     Parent root = FXMLLoader.load(getClass().getResource(fxmlpath));

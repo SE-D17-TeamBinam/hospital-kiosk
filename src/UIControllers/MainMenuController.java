@@ -20,7 +20,7 @@ public class MainMenuController extends CentralUIController implements Initializ
   private ChoiceBox langBox;
 
   public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
-    //chooseLang();
+    chooseLang();
 
   }
 
@@ -62,7 +62,8 @@ public class MainMenuController extends CentralUIController implements Initializ
         new ChangeListener<Number>() {
           public void changed(ObservableValue ov, Number old_value, Number new_value) {
             // Change the language that's being displayed when the input changes
-            currLang = langBox.getSelectionModel().toString();
+
+            currLang = (String)langBox.getItems().get((int)new_value);
 
           }
         });

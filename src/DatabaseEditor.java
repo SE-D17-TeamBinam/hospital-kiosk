@@ -68,7 +68,7 @@ public class DatabaseEditor {
   //////// Location /////////
   ///////////////////////////
 
-  boolean addLocation(String name, String isFloor, String floor) {
+  boolean addLocation(String name, String isFloor, int floor) {
     dbc.send_Command(
         "insert into Location (name,isFloor,Floor) values (" + name + "," + isFloor + "," + floor
             + ")");
@@ -158,7 +158,11 @@ public class DatabaseEditor {
         "insert into Point (x,y,cost,pid) values (\"" + x + "\",\""
             + y + "\",\"" + cost + "\",\"" + id + "\" ); \n");
 
-    //add method to put node in location
+    //add instructions to put node in location
+
+    //name = point.name.replaceAll("\\s+","");
+    //this.addLocation(name,"N",floor);
+    //this.addPointLocation(name,Integer.parseInt(id));
 
     /*
     int i ;
@@ -187,15 +191,15 @@ public class DatabaseEditor {
   }
 
 
-  /*boolean update_nodes(ArrayList<Point> al){
+  boolean update_nodes(ArrayList<Point> al){
       dbc.send_Command("truncate table Point;");
       int i;
       for(i = 0;i < al.size();i++){
-        this.addPoint(point);
+        this.addPoint(al.get(i));
       }
 
       return true;
-  }*/
+  }
 
   //////////////////////
   ///////Neighbor///////

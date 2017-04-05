@@ -11,7 +11,9 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -23,6 +25,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 /**
  * Created by Leon Zhang on 2017/4/1.
@@ -60,6 +63,20 @@ public class MapViewController extends CentralUIController implements Initializa
   @FXML
   public TextField floorField;
 
+  @FXML
+  private Label MapFloor;
+  @FXML
+  private Button MapBack;
+  @FXML
+  private Label MapZoomLabel;
+  @FXML
+  private Button MapNewPoint;
+  @FXML
+  private Button MapDeletePoint;
+  @FXML
+  private Button MapUpdatePoint;
+  @FXML
+  private Text MapSelected;
 
   @FXML
   Pane zoomPane;

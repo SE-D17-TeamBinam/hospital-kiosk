@@ -10,7 +10,9 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
@@ -50,6 +52,27 @@ public class DirectEditController extends CentralUIController implements Initial
   private ChoiceBox Location6;
   @FXML
   private ListView<String> Directory;
+
+  @FXML
+  private Button DirectBack;
+  @FXML
+  private Label DirectFirstName;
+  @FXML
+  private Label DirectLastName;
+  @FXML
+  private Label DirectTitle;
+  @FXML
+  private Label DirectLocations;
+  @FXML
+  private Button DirectCancel;
+  @FXML
+  private Button DirectSave;
+  @FXML
+  private Button DirectLogoff;
+  @FXML
+  private Button DirectCreate;
+  @FXML
+  private Button DirectDelete;
 
   @Override
   public void initialize(URL fxmlFileLocation, ResourceBundle resources) {

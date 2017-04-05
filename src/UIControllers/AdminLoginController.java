@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.layout.Pane;
@@ -24,6 +25,16 @@ public class AdminLoginController extends CentralUIController implements Initial
   private javafx.scene.control.TextField AdminNameField;
   @FXML
   private PasswordField AdminPassField;
+
+  /* language fields */
+  @FXML
+  private Button AdminBack;
+  @FXML
+  private Label AdminNameLabel;
+  @FXML
+  private Label AdminPassLabel;
+  @FXML
+  private Button AdminLoginButton;
   @FXML
   private Label LoginError;
 
@@ -36,6 +47,7 @@ public class AdminLoginController extends CentralUIController implements Initial
    * TODO: throw an exception in the future.
    */
   public void login () {
+
     Stage primaryStage = (Stage) AdminLogin.getScene().getWindow();
     String enteredName = AdminNameField.getText();
     String enteredPass = AdminPassField.getText();

@@ -9,6 +9,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -21,6 +22,15 @@ public class SearchMenuController extends CentralUIController implements Initial
   private ListView SearchDirectory;
   @FXML
   private TextField SearchField;
+
+  @FXML
+  private ListView DropMenu;
+  @FXML
+  private Button SearchMap;
+  @FXML
+  private Button SearchInfo;
+  @FXML
+  private Button SearchBack;
 
   public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
     // actions of each ui element

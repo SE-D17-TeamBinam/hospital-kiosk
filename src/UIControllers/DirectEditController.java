@@ -141,6 +141,17 @@ public class DirectEditController extends CentralUIController implements Initial
 
   }
 
+  @FXML
+  public void editMap(){
+    mapViewFlag = 3;
+    Stage primaryStage = (Stage) DirectEdit.getScene().getWindow();
+    try {
+      loadScene(primaryStage, "/MapScene.fxml");
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+  }
+
   public void displayLoc () {
     Location1.setItems(FXCollections.observableList(roomNames));
     Location2.setItems(FXCollections.observableList(roomNames));

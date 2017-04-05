@@ -10,10 +10,11 @@ import javafx.stage.Stage;
  */
 
 public class mainMenuController extends centralUIController implements Initializable {
-  // define all ui elements
+  /* initialize all ui elements */
   @FXML
   private Pane MainMenu;
 
+  @Override
   public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
   }
 

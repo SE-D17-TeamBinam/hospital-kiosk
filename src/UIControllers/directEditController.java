@@ -21,14 +21,17 @@ import javafx.stage.Stage;
  * Created by Leon Zhang on 4/4/2017.
  */
 public class directEditController extends centralUIController implements Initializable {
+
+  /* initialize private variables */
+  private Physician selectedHP = null;
   private int selectedHPIndex;
   private boolean locationShown;
-  private Physician selectedHP = null;
   private ArrayList<Physician> docs;
   private ArrayList<Point> rooms;
   private ArrayList<String> roomNames;
   private ArrayList<String> docNames;
 
+  /* initialize all ui elements*/
   @FXML
   private Pane DirectEdit;
   @FXML
@@ -55,12 +58,15 @@ public class directEditController extends centralUIController implements Initial
   @Override
   public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
 
+    /* define arraylists
+    * TODO: DB people should pass the array of rooms to rooms, the array of Physicians to docs */
     rooms = new ArrayList<Point>();
     docs = new ArrayList<Physician>();
     roomNames = new ArrayList<String>();
     docNames = new ArrayList<String>();
     locationShown = false;
-    // get list of rooms
+
+    /* tests
     Point a1 = new Point(0, 0, "a");
     Point a2 = new Point(0, 0, "b");
     Point a3 = new Point(0, 0, "c");
@@ -81,11 +87,12 @@ public class directEditController extends centralUIController implements Initial
     docs.add(b2);
     docs.add(b3);
     docs.add(b4);
+    */
 
-
-    // load all docs
+    /* load all docs */
     refreshDir();
 
+    /* fill room names */
     roomNames.add("None");
     for (Point n : rooms) {
       roomNames.add(n.getName());

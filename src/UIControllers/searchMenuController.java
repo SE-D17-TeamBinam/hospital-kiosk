@@ -1,6 +1,8 @@
 package UIControllers;
 
 import Definitions.Physician;
+import Definitions.Point;
+import java.lang.reflect.Array;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,20 +18,49 @@ import javafx.stage.Stage;
  * Created by Leon Zhang on 2017/4/1.
  */
 public class searchMenuController extends centralUIController implements Initializable {
-  // define all ui elements
+  /* initialize all ui elements */
   @FXML
   private ListView SearchDirectory;
   @FXML
   private TextField SearchField;
 
+  @Override
   public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
     // actions of each ui element
+    ArrayList<Point> rooms = new ArrayList<Point>();
+    ArrayList<Physician> docs = new ArrayList<Physician>();
+    // get list of rooms
+    Point a1 = new Point(0, 0, "a");
+    Point a2 = new Point(0, 0, "b");
+    Point a3 = new Point(0, 0, "c");
+    Point a4 = new Point(0, 0, "d");
+    Point a5 = new Point(0, 0, "e");
+    Point a6 = new Point(0, 0, "f");
+    rooms.add(a1);
+    rooms.add(a2);
+    rooms.add(a3);
+    rooms.add(a4);
+    rooms.add(a5);
+    rooms.add(a6);
+    Physician b1 = new Physician("A", "B", "Nurse", 0, rooms);
+    Physician b2 = new Physician("C", "D", "Nurse", 1, rooms);
+    Physician b3 = new Physician("E", "F", "Nurse", 2, rooms);
+    Physician b4 = new Physician("G", "H", "Nurse", 3, rooms);
+    docs.add(b1);
+    docs.add(b2);
+    docs.add(b3);
+    docs.add(b4);
+    updateDirectory(docs);
   }
 
   public void updateDirectory (ArrayList<Physician> HCs){
     ArrayList<String> list = new ArrayList<String>();
     for (Physician doctor : HCs) {
-      String newDoc = doctor.getLastName() + ", " + doctor.getFirstName();
+      String newDoc = doctor.getLastName() + ", " + doctor.getFirstName() + ", " + doctor.getTitle()
+          + "\nLocations: ";
+      for (Point p : doctor.getLocations()) {
+        newDoc = newDoc + ", " + p.getName();
+      }
       list.add(newDoc);
     }
     ObservableList<String> listHC = FXCollections.observableList(list);

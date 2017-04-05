@@ -37,13 +37,27 @@ public class Point {
   public void addParent(Point padre){
         this.parent = padre;
     }
-
+  /**Heurstic will give the manhattan straight line distance from one point to another
+   * <p>
+   *   it does the distance formula dist =difference of x  and difference of y
+   * </p>
+   * @param End
+   * @return int The return will be the manhattan line distance
+   */
   public int Heuristic(Point End){
     int x = Math.abs(this.xCoord - End.xCoord);
     int y = Math.abs(this.yCoord - End.yCoord);
     return x+y;
   }
 
+  /**
+   * Distance will find the straight line distance from one point to another
+   * <p>
+   *   it does the distance formula dist = sqrt(diffence of x squared and difference of y squared)
+   * </p>
+   * @param End
+   * @return int The return will be the straight line distance
+   */
   public int Distance(Point End){//Straight Line Distance
     double x = End.xCoord - this.xCoord;
     double y = End.yCoord - this.yCoord;

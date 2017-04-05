@@ -9,12 +9,12 @@ public class PointTest {
   //List of node-Empty
   private ArrayList<Point> neigh = new ArrayList<Point>();
   //Point 1
-  private Point point1 = new Point( 42, 50, "A56","A56", neigh, 4);
+  private Point point1 = new Point( 42, 50, "A56",1, neigh, 4);
   // Point 2
-  private Point point2 = new Point( 0, -5, "Basement", "Base",
+  private Point point2 = new Point( 0, -5, "Basement", 0,
       null, -1);
   // Point 2
-  private Point point3 = new Point( 12, 30, "5th FLoor","5a",
+  private Point point3 = new Point( 12, 30, "5th FLoor",1,
       null, 5);
   ;
   @Test

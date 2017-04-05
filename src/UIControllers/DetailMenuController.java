@@ -1,4 +1,4 @@
-package UIControllers.controllers;
+package UIControllers;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -10,7 +10,7 @@ import javafx.stage.Stage;
  * Created by Leon Zhang on 2017/4/1.
  */
 
-public class detailMenuController extends centralUIController implements Initializable {
+public class DetailMenuController extends CentralUIController implements Initializable {
   // define all ui elements
   @FXML
   private Pane DetailMenu; // Value injected by FXMLLoader

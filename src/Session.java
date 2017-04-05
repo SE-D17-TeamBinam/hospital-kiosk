@@ -9,6 +9,9 @@ public class Session {
   public int zoomLevel;
   public Language currLang = Language.ENGLISH;
 
+  public void setLanguage(Language lang) {
+    this.currLang = lang;
+  }
   public Session(){
 
   }

@@ -1,4 +1,4 @@
-import UIControllers.controllers.centralUIController;
+import UIControllers.CentralUIController;
 import javafx.stage.Stage;
 
 /**
@@ -10,11 +10,11 @@ public class CentralController {
   private Controller dController;
   //private CredentialManager credManager;
   static Session currSession = new Session();
-  private centralUIController uiController;
+  private CentralUIController uiController;
   public CentralController(){
   }
   public void startUI (Stage primaryStage) throws Exception {
-    this.uiController = new centralUIController();
+    this.uiController = new CentralUIController();
     uiController.restartUI(primaryStage);
   }
 }

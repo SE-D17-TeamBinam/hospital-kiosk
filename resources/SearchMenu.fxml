@@ -9,9 +9,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1300.0"
-  xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1"
-  fx:controller="UIControllers.controllers.searchMenuController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UIControllers.SearchMenuController">
    <children>
       <Pane id="SearchMenu" prefHeight="750.0" prefWidth="1300.0">
          <children>
@@ -20,7 +18,7 @@
                   <Image url="@icons/background_shapte.png" />
                </image>
             </ImageView>
-            <TextField fx:id="SearchField" id="SearchDirectory" layoutX="325.0" layoutY="235.0" prefHeight="75.0" prefWidth="575.0" promptText="Search Directory">
+            <TextField id="SearchDirectory" fx:id="SearchField" layoutX="325.0" layoutY="235.0" prefHeight="75.0" prefWidth="575.0" promptText="Search Directory">
                <font>
                   <Font name="System Italic" size="35.0" />
                </font>
@@ -35,17 +33,17 @@
                   <Image url="@icons/BWFH_logo_rgb.jpg" />
                </image>
             </ImageView>
-            <Button id="SearchBack" layoutX="5.0" layoutY="5.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="150.0" text="&lt;- Back  " onMouseClicked="#back">
+            <Button id="SearchBack" layoutX="5.0" layoutY="5.0" mnemonicParsing="false" onMouseClicked="#back" prefHeight="75.0" prefWidth="150.0" text="&lt;- Back  ">
                <font>
                   <Font size="26.0" />
                </font>
             </Button>
-            <Button id="SearchClear" layoutX="900.0" layoutY="235.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" text="X" onMouseClicked="#clear">
+            <Button id="SearchClear" layoutX="900.0" layoutY="235.0" mnemonicParsing="false" onMouseClicked="#clear" prefHeight="75.0" prefWidth="75.0" text="X">
                <font>
                   <Font size="30.0" />
                </font>
             </Button>
-            <Button id="SearchDone" layoutX="1145.0" layoutY="5.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="150.0" text="Done" onMouseClicked="#back">
+            <Button id="SearchDone" layoutX="1145.0" layoutY="5.0" mnemonicParsing="false" onMouseClicked="#back" prefHeight="75.0" prefWidth="150.0" text="Done">
                <font>
                   <Font size="26.0" />
                </font>
@@ -53,7 +51,7 @@
             <Pane layoutX="325.0" layoutY="320.0" prefHeight="365.0" prefWidth="650.0">
                <children>
                   <Button id="SearchInfo" layoutX="535.0" layoutY="315.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="115.0" text="  View Info -&gt;" />
-                  <ListView fx:id="SearchDirectory" prefHeight="305.0" prefWidth="650.0" />
+                  <ListView fx:id="SearchDirectory" maxHeight="305.0" maxWidth="650.0" prefHeight="305.0" prefWidth="650.0" />
                   <Button id="SearchMap" layoutX="410.0" layoutY="315.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="115.0" text="Show on Map" />
                </children>
             </Pane>

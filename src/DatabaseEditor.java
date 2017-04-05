@@ -199,6 +199,24 @@ public class DatabaseEditor {
       return true;
   }
 
+  ArrayList<Point> getAllPoints() throws SQLException {
+    ArrayList<Point> points = new ArrayList<Point>();
+    ResultSet res = dbc.send_Command("select * from point").get(0);
+    while (res.next()) {
+      int floor = res.getInt("PID");
+      String name = res.getString("NAME");
+      String id = res.getString("PID");
+      int x = res.getInt("x");
+      int y = res.getInt("y");
+      int cost =res.getInt("cost");
+
+      //change neighbors list
+      Point point = new Point(x, y,name,id,new ArrayList<Point>(),cost);
+      points.add(point);
+    }
+    return points;
+  }
+
   //////////////////////
   ///////Neighbor///////
   //////////////////////

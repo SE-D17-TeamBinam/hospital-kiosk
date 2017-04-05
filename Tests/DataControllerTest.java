@@ -38,7 +38,7 @@ public class DataControllerTest {
     p3.neighbors.add(p2);
     p4.neighbors.add(p3);
   }
-/**
+
   @Test
   void aStarAttemptTest() throws Exception {
     ArrayList<Point> expectedList = new ArrayList<Point>();
@@ -51,8 +51,8 @@ public class DataControllerTest {
     //expectedList.add(point2);
     if (testList.getPoints().size() == expectedList.size()){
       for (int i = 0; i < expectedList.size(); i++){
-        assertEquals(expectedList.get(i).xCoord, testList.getPoints().get(i).xCoord);
-        assertEquals(expectedList.get(i).yCoord, testList.getPoints().get(i).yCoord);
+        assertEquals(expectedList.get(i).getXCoord(), testList.getPoints().get(i).getXCoord());
+        assertEquals(expectedList.get(i).getYCoord(), testList.getPoints().get(i).getYCoord());
       }
     }
     else {
@@ -77,8 +77,8 @@ public class DataControllerTest {
     //expectedList.add(point2);
     if (testList.getPoints().size() == expectedList.size()){
       for (int i = 0; i < expectedList.size(); i++){
-        assertEquals(expectedList.get(i).xCoord, testList.getPoints().get(i).xCoord);
-        assertEquals(expectedList.get(i).yCoord, testList.getPoints().get(i).yCoord);
+        assertEquals(expectedList.get(i).getXCoord(), testList.getPoints().get(i).getXCoord());
+        assertEquals(expectedList.get(i).getYCoord(), testList.getPoints().get(i).getYCoord());
       }
     }
     else {

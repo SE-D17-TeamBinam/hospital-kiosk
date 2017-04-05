@@ -1,4 +1,4 @@
-import UIControllers.controllers.centralUIController;
+import UIControllers.centralUIController;
 import javafx.stage.Stage;
 
 /**

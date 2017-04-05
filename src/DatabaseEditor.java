@@ -14,9 +14,6 @@ public class DatabaseEditor {
     this.dbc = _dbc;
   }
 
-  ///////////////////////////
-  ///////// Service /////////
-  ///////////////////////////
 
 
   boolean addService(String service, String md_related) {
@@ -129,14 +126,14 @@ public class DatabaseEditor {
   boolean addPointLocation(String location_name,int pid){
     dbc.send_Command(
         "insert into Point_Location (lid,pid) select lid,pid from location,point where location =  '"
-            + location_name + "' and pid = '" + pid +  "');\n");
+            + location_name + "' and pid = " + pid +  ");\n");
     return true;
   }
 
   boolean removeLocationPoint(String location_name,int pid){
 
     dbc.send_Command(
-        "delete from Point_Location where pid = '" + pid +  "' and lid = (select lid from location where name = '" + location_name +  "' ) ); \n");
+        "delete from Point_Location where pid = " + pid +  " and lid = (select lid from location where name = '" + location_name +  "' ) ); \n");
     return true;
 
   }
@@ -155,8 +152,8 @@ public class DatabaseEditor {
 
 
     dbc.send_Command(
-        "insert into Point (x,y,cost,pid) values ('" + x + "','"
-            + y + "','" + cost + "','" + id + "' ); \n");
+        "insert into Point (x,y,cost,pid) values (" + x + ","
+            + y + "," + cost + "," + id + "); \n");
 
     //add method to put node in location
 
@@ -182,7 +179,7 @@ public class DatabaseEditor {
     String name = point.name;
 
     dbc.send_Command(
-        "delete from Point where pid = '" + id + "' ); \n");
+        "delete from Point where pid = " + id + "); \n");
     return true;
   }
 
@@ -204,14 +201,14 @@ public class DatabaseEditor {
   boolean addNeighbor(int pid) {
 
     dbc.send_Command(
-        "insert into Neighbor (pid) values ('" + pid + "' ); \n");
+        "insert into Neighbor (pid) values (" + pid + " ); \n");
     return true;
   }
 
   boolean removeNeighbor(int pid) {
 
     dbc.send_Command(
-        "delete from Neighbor where pid = '" + pid + "' ); \n");
+        "delete from Neighbor where pid = " + pid + " ); \n");
     return true;
   }
 
@@ -230,14 +227,15 @@ public class DatabaseEditor {
   boolean addNeighboring(int pid_n,int pid_p) {
 
     dbc.send_Command(
-        "insert into Neighboring (pid_n,pid_p) values ('" + pid_n + "','" + pid_p +  "' ); \n");
+        "insert into Neighboring (pid_n,pid_p) values (" + pid_n + "," + pid_p +  " ); \n");
     return true;
   }
 
   boolean deleteNeighboring(int pid_n,int pid_p) {
 
     dbc.send_Command(
-        "delete from Neighboring where pid_n = '" + pid_n + "' and pid_p = '" + pid_p +  "' ); \n");
+        "delete from Neighboring where pid_n = " + pid_n + " and pid_p = " + pid_p +  " ); \n");
     return true;
   }
+
 }

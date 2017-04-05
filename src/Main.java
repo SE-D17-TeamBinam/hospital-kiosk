@@ -1,6 +1,5 @@
 import static javafx.application.Application.launch;
 
-import UIControllers.controllers.centralUIController;
 import javafx.application.Application;
 import javafx.stage.Stage;
 

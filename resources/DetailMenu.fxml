@@ -8,28 +8,67 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750" prefWidth="1300"
-  xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1"
-  fx:controller="UIControllers.controllers.detailMenuController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750" prefWidth="1300" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UIControllers.DetailMenuController">
   <children>
-      <Pane fx:id="DetailMenu" id="DetailMenu" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750" prefWidth="1300" style="-fx-background-color: #FFFFFF;">
+      <Pane fx:id="DetailMenu" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750" prefWidth="1300" style="-fx-background-color: #FFFFFF;">
          <children>
-            <ImageView id="DetailBack" fitHeight="62.0" fitWidth="130.0" layoutX="14.0" layoutY="15.0">
+            <ImageView fx:id="DetailBackground" fitHeight="379.0" fitWidth="1300.0" layoutY="300.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@icons/backtomain.jpg" />
+                  <Image url="@icons/background_shapte.png" />
                </image>
             </ImageView>
-            <Label id="DetailTitle" alignment="CENTER" contentDisplay="BOTTOM" layoutX="187.0" layoutY="66.0" prefHeight="32.0" prefWidth="227.0" text="Room Details">
+            <ImageView fx:id="DetailBanner" fitHeight="160.0" fitWidth="1300.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@icons/banner.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="DetailLogo" fitHeight="82.0" fitWidth="496.0" layoutX="410.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@icons/BWFH_logo_rgb.jpg" />
+               </image>
+            </ImageView>
+            <Label fx:id="DetailTitle" alignment="CENTER" contentDisplay="BOTTOM" layoutX="508.0" layoutY="180.0" text="Room Details">
                <font>
-                  <Font size="24.0" />
+                  <Font size="48.0" />
                </font>
             </Label>
-            <Button id="DetailGoto" alignment="CENTER" layoutX="464.0" layoutY="354.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="122.0" text="Go to this room" />
-            <Label id="DetailRoomNum" layoutX="52.0" layoutY="119.0" prefHeight="45.0" prefWidth="503.0" text="Room 502" />
-            <Label id="DetailService" layoutX="52.0" layoutY="164.0" prefHeight="45.0" prefWidth="503.0" text="Services: CT" />
-            <Label id="DetailDoctor" layoutX="52.0" layoutY="209.0" prefHeight="45.0" prefWidth="503.0" text="Doctor: Harry" />
-            <Label id="DetailHP" layoutX="52.0" layoutY="254.0" prefHeight="45.0" prefWidth="503.0" text="Healthcare provider: Boston Healthcare" />
-            <Button id="DetailQuit" layoutX="525.0" layoutY="14.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="60.0" text="Quit" onMouseClicked="#quit"/>
+            <Label fx:id="DetailRoomName" layoutX="300.0" layoutY="300.0" text="Room Name">
+               <font>
+                  <Font size="30.0" />
+               </font></Label>
+            <Label fx:id="DetailRoomFloor" layoutX="192.0" layoutY="450.0" text="Healthcare Providers">
+               <font>
+                  <Font size="30.0" />
+               </font></Label>
+            <Label fx:id="DetailHCProvider" layoutX="398.0" layoutY="375.0" text="Floor">
+               <font>
+                  <Font size="30.0" />
+               </font></Label>
+            <Button fx:id="DetailBack" layoutX="5.0" layoutY="5.0" mnemonicParsing="false" onMouseClicked="#back" prefHeight="75.0" prefWidth="150.0" text="&lt;- Back  ">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </Button>
+            <Button fx:id="DetailDone" layoutX="1145.0" layoutY="5.0" mnemonicParsing="false" onMouseClicked="#back" prefHeight="75.0" prefWidth="150.0" text="Done">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </Button>
+            <Label fx:id="DetailNameField" layoutX="505.0" layoutY="300.0" maxWidth="700.0" prefWidth="700.0" text=" ">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+            <Label fx:id="DetailFloorField" layoutX="505.0" layoutY="375.0" maxWidth="700.0" prefWidth="700.0" text=" ">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+            <Label fx:id="DetailHCPField" layoutX="505.0" layoutY="450.0" maxHeight="270.0" maxWidth="700.0" prefHeight="270.0" prefWidth="700.0" text=" ">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
    </children>

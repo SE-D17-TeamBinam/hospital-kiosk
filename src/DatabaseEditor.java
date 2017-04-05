@@ -184,6 +184,7 @@ public class DatabaseEditor {
     return true;
   }
 
+
   /*boolean update_nodes(ArrayList<Point> al){
       dbc.send_Command("truncate table Point;");
       int i;

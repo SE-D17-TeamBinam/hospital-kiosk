@@ -18,12 +18,23 @@ public class Point {
   String name;  //Name of the room
   int id;      //Unique Identifier
   int floor;
-  public ArrayList<Point> neighbors;
+  public ArrayList<Point> neighbors = new ArrayList<>();
   //Attributes For A* only below.
   Point parent;
   int cost;
 
     //Constructor
+    public Point(double xCoord, double yCoord, String name) {
+      this.xCoord = (int) xCoord;
+      this.yCoord = (int) yCoord;
+      this.name = name;
+    }
+
+  public Point(double xCoord, double yCoord, int floor){
+    this.xCoord = (int) xCoord;
+    this.yCoord = (int) yCoord;
+    this.floor = floor;
+  }
   public Point(int xCoord, int yCoord, String name, int id, ArrayList <Point> new_neighbors, int floor){
   this.xCoord = xCoord;
   this.yCoord = yCoord;
@@ -36,9 +47,43 @@ public class Point {
   }
 
   //Methods
+  public void connectTo(Point node) {
+    node.getNeighbors().add(this);
+    this.neighbors.add(node);
+  }
+  public ArrayList<Point> getNeighbors() {
+    return neighbors;
+  }
+
   public void addParent(Point padre){
         this.parent = padre;
     }
+
+  public void setName(String newName) {
+    name = newName;
+  }
+
+  public String getName(){return name;}
+
+  public void setFloor(int floor) {
+    this.floor = floor;
+  }
+
+  public int getFloor() {
+    return floor;
+  }
+
+  public void setXCoord(double xCoord){
+    this.xCoord = (int) xCoord;
+  }
+
+  public int getXCoord(){return this.xCoord;}
+
+  public int getYCoord(){return this.yCoord;}
+
+  public void setYCoord(double yCoord){
+    this.yCoord = (int) yCoord;
+  }
   /**Heurstic will give the manhattan straight line distance from one point to another
    * <p>
    *   it does the distance formula dist =difference of x  and difference of y

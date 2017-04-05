@@ -1,9 +1,11 @@
 package UIControllers;
 
+import java.util.ArrayList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.Point;
 
 
 public class CentralUIController {
@@ -14,6 +16,7 @@ public class CentralUIController {
    */
   protected static int mapViewFlag = 0;
   protected static String currLang = "ENGLISH";
+  public static ArrayList<Point> globalPoints = new ArrayList<Point>();
   /**
    * Set the stage to the initial scene (main menu)
    * @parameter primaryStage: The main stage of the application

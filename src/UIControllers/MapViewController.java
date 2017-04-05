@@ -1,9 +1,7 @@
 package UIControllers;
-
 import static com.sun.javafx.sg.prism.NGCanvas.LINE_WIDTH;
 
 import Definitions.Coordinate;
-import Definitions.Point;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -28,6 +26,8 @@ import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import org.DataController;
+import org.Point;
 
 /**
  * Created by Leon Zhang on 2017/4/1.
@@ -119,16 +119,17 @@ public class MapViewController extends CentralUIController implements Initializa
   private double mapReleasedX;
   private double mapReleasedY;
 
+
   ////////////////////////
   // Administrator Data //
   ////////////////////////
 
   // ArrayList of Nodes to maintain in memory
-  private ArrayList<Definitions.Point> points = new ArrayList<Definitions.Point>();
+  private ArrayList<org.Point> points = new ArrayList<org.Point>();
 
   // The currently selected node
-  private Definitions.Point pointFocus;
-  private ArrayList<Definitions.Point> nodes = new ArrayList<Definitions.Point>();
+  private org.Point pointFocus = null;
+  private ArrayList<org.Point> nodes = new ArrayList<org.Point>();
   // List of points that are currently being displayed
   // Note: "org.Point" refers to a graphical object being displayed, not a room for this project
   private ArrayList<javafx.scene.Node> currentlyDrawnNodes = new ArrayList<javafx.scene.Node>();
@@ -139,10 +140,10 @@ public class MapViewController extends CentralUIController implements Initializa
 
   // For drawing the points
   private double NODE_RADIUS = 15;
-  private Color NODE_COLOR = new Color(1, 0, 0, 1);
+  private Color NODE_COLOR = new Color(1, 0, 0,1);
   // For drawing connections between points
   private double LINE_FILL = 2;
-  private Color LINE_COLOR = new Color(0, 0, 0, 1);
+  private Color LINE_COLOR = new Color(0,0,0,1);
 
   private final double CLICK_SELECTION_RADIUS = 25;
 
@@ -151,21 +152,18 @@ public class MapViewController extends CentralUIController implements Initializa
 
   // TODO List
   // Add a feature to change privilege modes -> DONE
-  // 1 -> just the map
-  // 2 -> draw lines
-  // 3 -> draw lines, draw paths, show admin panel, enable mouse shortcuts
+    // 1 -> just the map
+    // 2 -> draw lines
+    // 3 -> draw lines, draw paths, show admin panel, enable mouse shortcuts
   // Add feature to display points relative to map -> DONE
   // Add feature to display node connections -> DONE
   // Add scaling of UI when window resizes -> DONE
-  // Add a feature to enable adding of points -> DONE
-  // Add a feature to enable editing of points -> DONE
-  // Add a feature to enable deleting of points -> DONE
-  // Implement click vs drag detection -> DONE
-  // Add a feature to allow right-click dragging to connect points -> DONE
-  // Add dropdown for starting path on search menu. contains directory entries with non-null names -> DONE
-  // change map zoom behind the scenes after each change to the map -> DONE
-  // Add feature to create new nodes with left click -> DONE
+    // Add a feature to enable adding of points -> DONE
+    // Add a feature to enable editing of points -> DONE
+    // Add a feature to enable deleting of points -> DONE
 
+  // Add a feature to allow right-click dragging to connect points
+    // Add dropdown for starting path on search menu. contains directory entries with non-null names
   // Add padding to the logo on every menu so that wong doesn't get mad
   // Add a save button, includes generating uniqueIDs and updating database
   // Changing floors should query for points only on the floor
@@ -173,7 +171,6 @@ public class MapViewController extends CentralUIController implements Initializa
   // Do not allow disconnected Points
     // attempt to find paths to every node from one node
     // do not check if one or fewer nodes
-  // change mapViewFlag to use constants instead of 1, 2, 3
   // Add feature to display directions from search menu
 
   //////////////////
@@ -190,6 +187,7 @@ public class MapViewController extends CentralUIController implements Initializa
     initializeMapImage();
     paintNodeComponents();
     fixZoomPanePos();
+    getMap();
   }
 
   // Add listeners for resizing the screen
@@ -253,11 +251,11 @@ public class MapViewController extends CentralUIController implements Initializa
   // Stress Test for displaying points.
   private void addRandomNodes(int count) {
     Point point = null;
-    for (int i = 0; i < count; i++) {
-      double xCoord = Math.random() * 5000;
-      double yCoord = Math.random() * 2500;
-      Definitions.Point newPoint = new Definitions.Point(xCoord, yCoord, "");
-      if (point == null) {
+    for(int i = 0; i < count; i++){
+      double xCoord = Math.random()*5000;
+      double yCoord = Math.random()*2500;
+      org.Point newPoint = new org.Point(xCoord, yCoord, "");
+      if(point == null){
       } else {
         newPoint.connectTo(point);
       }
@@ -293,6 +291,7 @@ public class MapViewController extends CentralUIController implements Initializa
   }
 
   private void initializeMapImage() {
+    //mapImage.setTranslateZ(-5); // Push the map into the background
     mapImage.setFitHeight(mapImage.getImage().getHeight());
     mapImage.setFitWidth(mapImage.getImage().getWidth());
     mapImageWtHRatio = mapImage.getFitWidth() / mapImage.getFitHeight();
@@ -302,6 +301,13 @@ public class MapViewController extends CentralUIController implements Initializa
   private void saveMap(){
     // send the current state of the map
     // update_nodes(points); // maybe Controller.update_nodes(points);
+    globalPoints = points;
+  }
+
+  public void getMap(){
+    points = globalPoints;
+    startNodeBox.getItems().setAll(points);
+    endNodeBox.getItems().setAll(points);
   }
 
   @FXML
@@ -410,11 +416,13 @@ public class MapViewController extends CentralUIController implements Initializa
 
   @FXML
   public void zoomIn() {
+    getMap();
     changeZoom(true);
   }
 
   @FXML
   public void zoomOut() {
+    getMap();
     changeZoom(false);
   }
 
@@ -479,6 +487,26 @@ public class MapViewController extends CentralUIController implements Initializa
       nameField.setText(newFocus.getName());
     }
   }
+
+  @FXML
+  ChoiceBox startNodeBox;
+  @FXML
+  ChoiceBox endNodeBox;
+
+  @FXML
+  public void drawPath(){
+    DataController controller = new DataController(null);
+    try{
+      points = controller.Astar((Point) startNodeBox.getValue(), (Point) endNodeBox.getValue()).getPoints();
+//      ObservableList<javafx.scene.Node> children = ((AnchorPane) mapImage.getParent()).getChildren();
+//      children.removeAll(currentlyDrawnNodes);
+    } catch (Exception e) {
+
+    }
+
+  }
+
+
 
   ///////////////////////////
   // Scene Control Methods //

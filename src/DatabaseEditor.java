@@ -3,14 +3,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
- * Database Editor Abstracts the SQL Away from the rest of the program by providing methods to add /
- * remove / edit elements of the database directly in java methods Created by Evan on 4/3/2017.
+ * Created by evan on 3/25/17.
+ * This Object will add, remove and edit our hospital database
  */
 public class DatabaseEditor {
-
-  DatabaseController dbc;
-
-  DatabaseEditor(DatabaseController _dbc) {
+  DatabaseController dbc = null;
+  public DatabaseEditor (DatabaseController _dbc){
     this.dbc = _dbc;
   }
 
@@ -21,13 +19,13 @@ public class DatabaseEditor {
 
   boolean addService(String service, String md_related) {
     dbc.send_Command(
-        "insert into service (name,md_related) values (\"" + service + "\",\"" + md_related
-            + "\")");
+        "insert into service (name,md_related) values ('" + service + "','" + md_related
+            + "')");
     return true;
   }
 
   boolean removeService(String service) {
-    dbc.send_Command("delete from service where service = \"" + service + "\");");
+    dbc.send_Command("delete from service where service = '" + service + "');");
     return true;
   }
 
@@ -37,15 +35,15 @@ public class DatabaseEditor {
 
   boolean removePhysician(String first_name, String last_name, String title) {
     dbc.send_Command(
-        "delete from physician (first_name, last_name, title) values (\"" + first_name + "\",\""
-            + last_name + "\",\"" + title + "\")");
+        "delete from physician (first_name, last_name, title) values ('" + first_name + "','"
+            + last_name + "','" + title + "')");
     return true;
   }
 
   boolean addPhysician(String first_name, String last_name, String title) {
     dbc.send_Command(
-        "insert into physician (first_name, last_name, title) values (\"" + first_name + "\",\""
-            + last_name + "\",\"" + title + "\")");
+        "insert into physician (first_name, last_name, title) values ('" + first_name + "','"
+            + last_name + "','" + title + "')");
     return true;
   }
 
@@ -76,7 +74,7 @@ public class DatabaseEditor {
   }
 
   boolean removeLocation(String name, String isFloor, String floor) {
-    dbc.send_Command("delete from Location where name = \"" + name + "\")");
+    dbc.send_Command("delete from Location where name = '" + name + "')");
     return true;
   }
 
@@ -86,17 +84,17 @@ public class DatabaseEditor {
 
   boolean addServiceLocation(String service_name, String md_related, String location_name) {
     dbc.send_Command(
-        "insert into ServiceLocation (lid,sid) select lid,sid from service_location, service where location.name = \""
-            + location_name + "\", select sid from service where"
-            + " service.name = \"" + service_name + "\")\n ");
+        "insert into ServiceLocation (lid,sid) select lid,sid from service_location, service where location.name = '"
+            + location_name + "', select sid from service where"
+            + " service.name = '" + service_name + "')\n ");
     return true;
   }
 
   boolean removeServiceLocation(String service_name, String location_name) {
     dbc.send_Command(
-        "delete from ServiceLocation  where sid = (select sid from service where name = \""
-            + service_name + "\") and  lid = (select lid from location where"
-            + " name = \"" + location_name + "\")\n ");
+        "delete from ServiceLocation  where sid = (select sid from service where name = '"
+            + service_name + "') and  lid = (select lid from location where"
+            + " name = '" + location_name + "')\n ");
     return true;
   }
 
@@ -107,18 +105,18 @@ public class DatabaseEditor {
   boolean addPhysicianLocation(String first_name, String last_name, String title,
       String location_name) {
     dbc.send_Command(
-        "insert into P_Location (pid,lid) select pid,lid from physician,location where first_name = \""
-            + first_name + "\" and last_name = \"" + last_name + "\" and title = \"" + title
-            + "\"and name = \"" + location_name + "\");\n");
+        "insert into P_Location (pid,lid) select pid,lid from physician,location where first_name = '"
+            + first_name + "' and last_name = '" + last_name + "' and title = '" + title
+            + "'and name = '" + location_name + "');\n");
     return true;
   }
 
   boolean removePhysicianLocation(String first_name, String last_name, String title,
       String location_name) {
     dbc.send_Command(
-        "delete from P_Location where pid =  (select pid from physician where first_name = \""
-            + first_name + "\" and last_name = \"" + last_name + "\" and title = \"" + title
-            + "\")and lid  = (select lid from location where name = \"" + location_name + "\");\n");
+        "delete from P_Location where pid =  (select pid from physician where first_name = '"
+            + first_name + "' and last_name = '" + last_name + "' and title = '" + title
+            + "')and lid  = (select lid from location where name = '" + location_name + "');\n");
     return true;
   }
 
@@ -128,15 +126,15 @@ public class DatabaseEditor {
 
   boolean addPointLocation(String location_name,int pid){
     dbc.send_Command(
-        "insert into Point_Location (lid,pid) select lid,pid from location,point where location =  \""
-            + location_name + "\" and pid = \"" + pid +  "\");\n");
+        "insert into Point_Location (lid,pid) select lid,pid from location,point where location =  '"
+            + location_name + "' and pid = " + pid +  ");\n");
     return true;
   }
 
   boolean removeLocationPoint(String location_name,int pid){
 
     dbc.send_Command(
-        "delete from Point_Location where pid = \"" + pid +  "\" and lid = (select lid from location where name = \"" + location_name +  "\" ) ); \n");
+        "delete from Point_Location where pid = " + pid +  " and lid = (select lid from location where name = '" + location_name +  "' ) ); \n");
     return true;
 
   }
@@ -155,8 +153,8 @@ public class DatabaseEditor {
 
 
     dbc.send_Command(
-        "insert into Point (x,y,cost,pid) values (\"" + x + "\",\""
-            + y + "\",\"" + cost + "\",\"" + id + "\" ); \n");
+        "insert into Point (x,y,cost,pid) values (" + x + ","
+            + y + "," + cost + "," + id + "); \n");
 
     //add instructions to put node in location
 
@@ -186,7 +184,7 @@ public class DatabaseEditor {
     String name = point.name;
 
     dbc.send_Command(
-        "delete from Point where pid = \"" + id + "\" ); \n");
+        "delete from Point where pid = " + id + ";");
     return true;
   }
 
@@ -208,14 +206,14 @@ public class DatabaseEditor {
   boolean addNeighbor(int pid) {
 
     dbc.send_Command(
-        "insert into Neighbor (pid) values (\"" + pid + "\" ); \n");
+        "insert into Neighbor (pid) values (" + pid + " ); \n");
     return true;
   }
 
   boolean removeNeighbor(int pid) {
 
     dbc.send_Command(
-        "delete from Neighbor where pid = \"" + pid + "\" ); \n");
+        "delete from Neighbor where pid = " + pid + " ); \n");
     return true;
   }
 
@@ -234,16 +232,15 @@ public class DatabaseEditor {
   boolean addNeighboring(int pid_n,int pid_p) {
 
     dbc.send_Command(
-        "insert into Neighboring (pid_n,pid_p) values (\"" + pid_n + "\",\"" + pid_p +  "\" ); \n");
+        "insert into Neighboring (pid_n,pid_p) values (" + pid_n + "," + pid_p +  " ); \n");
     return true;
   }
 
   boolean deleteNeighboring(int pid_n,int pid_p) {
 
     dbc.send_Command(
-        "delete from Neighboring where pid_n = \"" + pid_n + "\" and pid_p = \"" + pid_p +  "\" ); \n");
+        "delete from Neighboring where pid_n = " + pid_n + " and pid_p = " + pid_p +  " ); \n");
     return true;
   }
-
 
 }

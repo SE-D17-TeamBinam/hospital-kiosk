@@ -54,4 +54,9 @@ public class Physician {
   public long getID () {
     return this.PID;
   }
+
+  @Override
+  public String toString() {
+    return firstName + " " + lastName + " " + title + " : " + PID;
+  }
 }

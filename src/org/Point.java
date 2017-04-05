@@ -13,26 +13,29 @@ import java.util.ArrayList;
  * and to make pathfinding easier.
  */
 public class Point {
-  int xCoord;    //X coordinate
-  int yCoord;    //Y coordinate
-  String name;  //Name of the room
-  int id;      //Unique Identifier
-  int floor;
+
+  public int xCoord;    //X coordinate
+  public int yCoord;    //Y coordinate
+  public String name;  //Name of the room
+  public int id;      //Unique Identifier
+  public int floor;
   public ArrayList<Point> neighbors;
   //Attributes For A* only below.
   Point parent;
-  int cost;
+  public int cost;
 
-    //Constructor
+
+  //Constructor
   public Point(int xCoord, int yCoord, String name, int id, ArrayList <Point> new_neighbors, int floor){
-  this.xCoord = xCoord;
-  this.yCoord = yCoord;
-  this.name = name;
-  this.id = id;
-  this.parent = null;
-  this.neighbors = new_neighbors;
-  this.cost = 0;
-  this.floor = floor;
+    this.xCoord = xCoord;
+    this.yCoord = yCoord;
+    this.name = name;
+    this.id = id;
+    this.parent = null;
+    this.neighbors = new_neighbors;
+    this.cost = 0;
+    this.floor = floor;
+
   }
 
   //Methods

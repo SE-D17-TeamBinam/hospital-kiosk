@@ -270,7 +270,6 @@ public class directEditController extends centralUIController implements Initial
       selectedHP.setTitle(Title.getText());
       selectedHP.setLocations(finalLocs());
       // check if it's a new Physician
-      System.out.println(Integer.toString(selectedHPIndex));
       if (selectedHPIndex >= docs.size()) {
         docs.add(selectedHP);
       } else {

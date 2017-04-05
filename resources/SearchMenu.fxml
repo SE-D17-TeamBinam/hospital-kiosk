@@ -55,6 +55,7 @@
                   <Button id="SearchMap" layoutX="410.0" layoutY="315.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="115.0" text="Show on Map" />
                </children>
             </Pane>
+            <ListView fx:id="DropMenu" layoutX="60.0" layoutY="267.0" prefHeight="349.0" prefWidth="232.0" />
          </children>
       </Pane>
    </children>

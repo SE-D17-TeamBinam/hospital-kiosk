@@ -23,7 +23,8 @@ public class searchMenuController extends centralUIController implements Initial
   private ListView SearchDirectory;
   @FXML
   private TextField SearchField;
-
+  @FXML
+  private ListView DropMenu;
   @Override
   public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
     /**
@@ -74,6 +75,16 @@ public class searchMenuController extends centralUIController implements Initial
     SearchDirectory.setItems(listHC);
   }
 
+  public void updateDropMenu(List<Point> points) {
+    ArrayList<String> list = new ArrayList<String>();
+    for (Point room : points) {
+      if (!(room.getName().equals(""))) {
+        list.add(room.getName());
+      }
+    }
+    ObservableList<String> nameList = FXCollections.observableList(list);
+    DropMenu.setItems(nameList);
+  }
   /**
    * go back to the main menu
    */

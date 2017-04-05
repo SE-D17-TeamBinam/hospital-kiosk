@@ -155,6 +155,7 @@ public class mapViewController extends centralUIController implements Initializa
   // Initialization
   @FXML
   public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
+    mapViewFlag = 3;
     System.out.println("Permissions: " + mapViewFlag);
     initializeScene();
     initializeChoiceBox();
@@ -304,7 +305,6 @@ public class mapViewController extends centralUIController implements Initializa
     pointFocus.setYCoord(y);
   }
 
-
   /* Type of map to show
   1 for interactive map
   2 for directory map
@@ -402,8 +402,12 @@ public class mapViewController extends centralUIController implements Initializa
 
   // Draws points and/or node connections on the map
   private void paintNodeComponents(){ // TODO generalize this and make it take a list of definitions.Point
+    if (mapViewFlag == 1){
+      return;
+    }
 
-    ObservableList<javafx.scene.Node> children = ((AnchorPane) mapImage.getParent()).getChildren();
+   ObservableList<javafx.scene.Node> children = ((AnchorPane) mapImage.getParent()).getChildren();
+
    children.removeAll(currentlyDrawnNodes);
    // Tracking these here so that I can make sure they get painted underneath points
    ArrayList<Line> lines = new ArrayList<Line>();
@@ -414,6 +418,7 @@ public class mapViewController extends centralUIController implements Initializa
       // Takes into account map size and offset
       Coordinate where2DrawI = pixelToCoordinate(new Coordinate(points.get(i).getXCoord(), points
           .get(i).getYCoord()));
+
       // Tracking the number of lines so that I can draw points on top of them
       int lineCount = 0;
       // Determine if lines should be drawn as well

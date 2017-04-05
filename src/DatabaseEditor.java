@@ -1,3 +1,4 @@
+import java.sql.Array;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -45,7 +46,7 @@ public class DatabaseEditor {
       String title = res.getString("TITLE");
       long pid = res.getLong("PID");
 
-      Physician p = new Physician(first_name, last_name, title, pid, new ArrayList<Point>());
+      Physician p = new Physician(first_name, last_name, title, pid, new ArrayList<Point>()); // TODO This array list is empty! FIX
       physicians.add(p);
     }
     return physicians;
@@ -86,21 +87,39 @@ public class DatabaseEditor {
   ///////////////////////////
 
   boolean addPoint(Point point) {
-    dbc.send_Command("insert into point (pid,x,y,name) values (" + point.id + "," + point.xCoord + "," + point.yCoord + ",\"" + point.name + "\");");
+    dbc.send_Command(
+        "insert into point (pid,x,y,name) values (" + point.id + "," + point.xCoord + ","
+            + point.yCoord + ",\"" + point.name + "\");");
     return true;
   }
 
   boolean removePoint(Point point) {
-    dbc.send_Command("delete from point where pid = " + point.id + " and x=" + point.xCoord + "and y=" + point.yCoord + " and name=\"" + point.name + "\");");
+    dbc.send_Command(
+        "delete from point where pid = " + point.id + " and x=" + point.xCoord + "and y="
+            + point.yCoord + " and name=\"" + point.name + "\");");
     return true;
   }
 
-  boolean addPoints(ArrayList<Point> points){
-    for (Point point : points){
-      if (!addPoint(point))
+  boolean addPoints(ArrayList<Point> points) {
+    for (Point point : points) {
+      if (!addPoint(point)) {
         return false;
+      }
     }
     return true;
+  }
+
+  ArrayList<Point> getAllPoints() throws SQLException {
+    ArrayList<Point> points = new ArrayList<Point>();
+    ResultSet res = dbc.send_Command("select * from point").get(0);
+    while (res.next()) {
+      int x = res.getInt("x");
+      int y = res.getInt("y");
+      int pid = res.getInt("pid");
+      String name = res.getString("name");
+      Point point = new Point(x,y,name,Integer.toString(pid),new ArrayList<Point>(),4); //TODO This shouldnt be 4 in later iterations, also the array list is empty, fix that
+    }
+    return points;
   }
 
 

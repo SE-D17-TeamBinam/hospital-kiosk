@@ -3,10 +3,18 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Dictionary;
 import java.util.PriorityQueue;
+//import Statements
+/**
+ * @author ajnagal and aramirez2
+ *
+ * @since 1.2
+*/
 
 /**
-* Created by Alberto on 3/30/2017.
-*/
+ * The purpose of this class is to take in nodes and calculate the shortest path between
+ * the start and destination.
+ *
+ */
 public class DataController {
 ListPoints[] floors; //array of ListNodes that make up a whole floor?
 
@@ -20,20 +28,36 @@ this.floors = floors;
   public Dictionary getInfo(Point lol){
     return null;
   }
-  public ListPoints Astar (Point start, Point goal) throws Exception{ //A* algorithm to find efficient path
+
+  /**
+   * This is the A* algorithm to find the most efficient path
+   * <p>
+   *   A* is designed so that it finds the most cost efficient path.
+   *   total = cost + heuristic
+   *
+   * </p>
+   * @param   start
+   * @param   goal
+   * @return  ListPoint it returns a class that contains the ArrayList of nodes generated from A*
+   */
+
+  public ListPoints Astar (Point start, Point goal) throws Exception{
     Point next = new Point(500,500,"start",0, new ArrayList<Point>(),4);
     start.parent = start;
     start.cost = 0;
-    ArrayList<Point> open = new ArrayList<Point>(); //Seen but not checked
-    ArrayList<Point> close = new ArrayList<Point>(); //Seen and checked
+    ArrayList<Point> open = new ArrayList<Point>(); //List of nodes that are seen but not checked
+    ArrayList<Point> close = new ArrayList<Point>(); //List of nodes that are seen and checked
     int finding_lowest = 0; // helps find lowest total cost in open
     open.add(start);
 
 
     //Collections.min(open);
-
+/**
+ * This is the A* algorithm to find the most efficient path
+ *
+ */
     while(!(open.isEmpty())){
-      int total = 10000; // comparitng to function.
+      int total = 10000; // comparing to function.
       int i;
       for(i = 0; i < open.size(); i++){ //finds the lowest total in the open
 
@@ -81,6 +105,7 @@ this.floors = floors;
   }
 
 
+//This Comment is code all wrong
 
 //  public ListPoints Astar (Point start, Point goal) throws Exception{ //A* algorithm to find efficient path
 //    start.parent = null; //for finding a path
@@ -233,6 +258,12 @@ this.floors = floors;
 //  return DFSfunnel(next,goal,visited,possible);
 //  }
 
+  /**
+   *
+   * @param destination
+   * @param begin
+   * @return
+   */
   public ListPoints ListPath(Point destination, Point begin){    //ceate a path list by reading parents
     ArrayList<Point> order = new ArrayList<Point>();
 

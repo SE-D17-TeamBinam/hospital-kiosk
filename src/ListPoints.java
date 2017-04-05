@@ -1,7 +1,13 @@
 import java.util.ArrayList;
 
 /**
- * Created by Alberto on 4/3/2017.
+ * @author  ajanagal and aramirez2
+ *
+ * @since 1.0
+ */
+
+/**
+ * This class will store lists of Points to deliver to the controller.
  */
 public class ListPoints {
   private ArrayList<Point> points;  //List of Nodes that relate to each other

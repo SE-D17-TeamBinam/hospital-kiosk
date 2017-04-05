@@ -1,7 +1,7 @@
 package UIControllers;
 
 import Definitions.Physician;
-import Definitions.Point;
+import org.Point;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;

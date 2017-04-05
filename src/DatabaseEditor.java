@@ -3,17 +3,18 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
- * Database Editor Abstracts the SQL Away from the rest of the program by providing methods to add /
- * remove / edit elements of the database directly in java methods Created by Evan on 4/3/2017.
+ * Created by evan on 3/25/17.
+ * This Object will add, remove and edit our hospital database
  */
 public class DatabaseEditor {
-
-  DatabaseController dbc;
-
-  DatabaseEditor(DatabaseController _dbc) {
+  DatabaseController dbc = null;
+  public DatabaseEditor (DatabaseController _dbc){
     this.dbc = _dbc;
   }
 
+  ///////////////////////////
+  ///////// Service /////////
+  ///////////////////////////
 
 
   boolean addService(String service, String md_related) {
@@ -179,7 +180,7 @@ public class DatabaseEditor {
     String name = point.name;
 
     dbc.send_Command(
-        "delete from Point where pid = " + id + "); \n");
+        "delete from Point where pid = " + id + ";");
     return true;
   }
 

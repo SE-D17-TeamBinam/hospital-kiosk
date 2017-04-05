@@ -80,4 +80,28 @@ public class DatabaseEditor {
             + "\", select lid from location where name = \"" + location_name + "\");\n");
     return true;
   }
+
+  ///////////////////////////
+  ///////// Points //////////
+  ///////////////////////////
+
+  boolean addPoint(Point point) {
+    dbc.send_Command("insert into point (pid,x,y,name) values (" + point.id + "," + point.xCoord + "," + point.yCoord + ",\"" + point.name + "\");");
+    return true;
+  }
+
+  boolean removePoint(Point point) {
+    dbc.send_Command("delete from point where pid = " + point.id + " and x=" + point.xCoord + "and y=" + point.yCoord + " and name=\"" + point.name + "\");");
+    return true;
+  }
+
+  boolean addPoints(ArrayList<Point> points){
+    for (Point point : points){
+      if (!addPoint(point))
+        return false;
+    }
+    return true;
+  }
+
+
 }

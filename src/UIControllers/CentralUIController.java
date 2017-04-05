@@ -4,6 +4,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.Language;
 
 
 public class CentralUIController {
@@ -13,7 +14,7 @@ public class CentralUIController {
     3 for admin map
    */
   protected static int mapViewFlag = 0;
-  protected static String currLang = "ENGLISH";
+  public static String currLang = "ENGLISH";
   /**
    * Set the stage to the initial scene (main menu)
    * @parameter primaryStage: The main stage of the application

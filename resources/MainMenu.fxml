@@ -10,9 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1300.0"
-  xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1"
-  fx:controller="UIControllers.MainMenuController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UIControllers.MainMenuController">
    <children>
       <Pane fx:id="MainMenu" prefHeight="750.0" prefWidth="1300.0">
          <children>
@@ -39,7 +37,7 @@
                   <Point3D />
                </rotationAxis>
             </ImageView>
-            <Button fx:id="MapButton" contentDisplay="GRAPHIC_ONLY" layoutX="725.0" layoutY="240.0" mnemonicParsing="false" prefHeight="350.0" prefWidth="350.0" style="-fx-background-radius: 175;" text="Map" onMouseClicked="#gotoMap">
+            <Button fx:id="MapButton" contentDisplay="GRAPHIC_ONLY" layoutX="725.0" layoutY="240.0" mnemonicParsing="false" onMouseClicked="#gotoMap" prefHeight="350.0" prefWidth="350.0" style="-fx-background-radius: 175;" text="Map">
                <cursor>
                   <Cursor fx:constant="OPEN_HAND" />
                </cursor>
@@ -54,7 +52,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="SearchButton" contentDisplay="GRAPHIC_ONLY" layoutX="225.0" layoutY="240.0" mnemonicParsing="false" prefHeight="350.0" prefWidth="350.0" style="-fx-background-radius: 175;" text="Search" onMouseClicked="#gotoSearch">
+            <Button fx:id="SearchButton" contentDisplay="GRAPHIC_ONLY" layoutX="225.0" layoutY="240.0" mnemonicParsing="false" onMouseClicked="#gotoSearch" prefHeight="350.0" prefWidth="350.0" style="-fx-background-radius: 175;" text="Search">
                <cursor>
                   <Cursor fx:constant="OPEN_HAND" />
                </cursor>
@@ -69,6 +67,7 @@
                   <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                </padding>
             </Button>
+            <ChoiceBox fx:id="langBox" layoutX="32.0" layoutY="690.0" prefWidth="150.0" />
          </children>
       </Pane>
    </children>

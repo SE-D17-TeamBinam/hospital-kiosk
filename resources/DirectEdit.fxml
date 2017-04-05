@@ -11,9 +11,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1300.0"
-  xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1"
-  fx:controller="UIControllers.DirectEditController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UIControllers.DirectEditController">
    <children>
       <Pane fx:id="DirectEdit" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750" prefWidth="1300" style="-fx-background-color: #FFFFFF;">
          <children>
@@ -51,7 +49,7 @@
             <Label layoutX="748.0" layoutY="293.0" text="First Name" />
             <Label layoutX="748.0" layoutY="363.0" text="Title" />
             <Label layoutX="748.0" layoutY="433.0" text="Locations" />
-            <Button fx:id="DirectLogoff" layoutX="1145.0" layoutY="5.0" mnemonicParsing="false" onMouseClicked="#logoff" prefHeight="75.0" prefWidth="150.0" text="Log off" >
+            <Button fx:id="DirectLogoff" layoutX="1145.0" layoutY="5.0" mnemonicParsing="false" onMouseClicked="#logoff" prefHeight="75.0" prefWidth="150.0" text="Log off">
                <font>
                   <Font size="26.0" />
                </font>
@@ -66,8 +64,13 @@
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button layoutX="1165.0" layoutY="496.0" mnemonicParsing="false" text="Create" onMouseClicked="#create"/>
-            <Button layoutX="1165.0" layoutY="551.0" mnemonicParsing="false" text="Delete" onMouseClicked="#delete"/>
+            <Button layoutX="1165.0" layoutY="496.0" mnemonicParsing="false" onMouseClicked="#create" text="Create" />
+            <Button layoutX="1165.0" layoutY="551.0" mnemonicParsing="false" onMouseClicked="#delete" text="Delete" />
+            <Button layoutX="1119.0" layoutY="213.0" mnemonicParsing="false" onMouseClicked="#editMap" text="Edit Map">
+               <font>
+                  <Font size="29.0" />
+               </font>
+            </Button>
          </children>
       </Pane>
    </children>

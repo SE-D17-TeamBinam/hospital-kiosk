@@ -70,9 +70,16 @@
             <Text layoutX="124.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="y:" />
             <TextField fx:id="floorField" layoutX="45.0" layoutY="77.0" prefHeight="31.0" prefWidth="53.0" />
             <Text layoutX="5.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Floor:" />
-            <Button layoutX="31.0" layoutY="198.0" mnemonicParsing="false" onMouseClicked="#addPoint" prefHeight="31.0" prefWidth="65.0" text="New" />
-            <Button layoutX="134.0" layoutY="198.0" mnemonicParsing="false" onMouseClicked="#deletePoint" prefHeight="31.0" prefWidth="65.0" text="Delete" />
-            <Button layoutX="31.0" layoutY="237.0" mnemonicParsing="false" onMouseClicked="#updatePoint" prefHeight="31.0" prefWidth="168.0" text="Update Selected" />
+            <Button layoutX="31.0" layoutY="159.0" mnemonicParsing="false" onMouseClicked="#addPoint" prefHeight="31.0" prefWidth="65.0" text="New" />
+            <Button layoutX="134.0" layoutY="159.0" mnemonicParsing="false" onMouseClicked="#deletePoint" prefHeight="31.0" prefWidth="65.0" text="Delete" />
+            <Button layoutX="31.0" layoutY="198.0" mnemonicParsing="false" onMouseClicked="#updatePoint" prefHeight="31.0" prefWidth="168.0" text="Update Selected" />
+            <TextField fx:id="nameField" layoutX="46.0" layoutY="117.0" prefHeight="31.0" prefWidth="153.0" />
+            <Text layoutX="4.0" layoutY="142.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name:">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Button layoutX="31.0" layoutY="237.0" mnemonicParsing="false" onMouseClicked="#saveMap" prefHeight="31.0" prefWidth="168.0" text="Save Map" />
          </children>
       </Pane>
       <Pane fx:id="infoPane" layoutX="1070.0" layoutY="160.0" prefHeight="295.0" prefWidth="230.0">
@@ -83,6 +90,10 @@
                   <Font size="34.0" />
                </font>
             </Text>
+            <Label layoutX="31.0" layoutY="85.0" text="Label" fx:id="xLabel" />
+            <Label fx:id="yLabel" layoutX="156.0" layoutY="85.0" text="Label" />
+            <Label fx:id="floorLabel" layoutX="31.0" layoutY="148.0" text="Label" />
+            <Label fx:id="nameLabel" layoutX="98.0" layoutY="195.0" text="Label" />
          </children>
       </Pane>
    </children>

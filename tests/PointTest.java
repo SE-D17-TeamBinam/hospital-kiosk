@@ -3,18 +3,17 @@
  */
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.util.ArrayList;
-import org.Point;
 import org.junit.jupiter.api.Test;
 
 public class PointTest {
   //List of node-Empty
   private ArrayList<Point> neigh = new ArrayList<Point>();
-  //org.Point 1
+  //Point 1
   private Point point1 = new Point( 42, 50, "A56",1, neigh, 4);
-  // org.Point 2
+  // Point 2
   private Point point2 = new Point( 0, -5, "Basement", 0,
       null, -1);
-  // org.Point 2
+  // Point 2
   private Point point3 = new Point( 12, 30, "5th FLoor",1,
       null, 5);
   ;

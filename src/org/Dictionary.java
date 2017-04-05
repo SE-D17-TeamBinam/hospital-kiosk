@@ -17,6 +17,7 @@ public class Dictionary {
    * objects that will pair the strings with the given language.
    */
   public Dictionary() {
+    /* dictionary definition */
     stringEntryMap = new HashMap<String, Entry>();
     HashMap<String, String> h = new HashMap<String, String>();
     h.put("SPANISH", "Espalda");

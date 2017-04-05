@@ -41,6 +41,7 @@ public class AdminLoginController extends CentralUIController implements Initial
 
   @Override
   public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
+    /* apply language configs */
     System.out.println(currLang);
     Dictionary d = new Dictionary();
     AdminBack.setText(d.getString("Back", currLang));

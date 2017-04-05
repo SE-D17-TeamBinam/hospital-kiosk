@@ -427,7 +427,7 @@ public class MapViewController extends CentralUIController implements Initializa
 
   private Point getNearestPointWithinRadius(Coordinate nearestTo, double within) {
     Point closest = null;
-    double closestDist = 1000;
+    double closestDist = Double.MAX_VALUE;
     for (int i = 0; i < points.size(); i++) {
       Point p = points.get(i);
       Coordinate pScene = pixelToCoordinate(new Coordinate(p.getXCoord(), p.getYCoord()));

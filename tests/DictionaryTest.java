@@ -1,4 +1,6 @@
 import java.util.HashMap;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -8,27 +10,52 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  */
 public class DictionaryTest {
 
-  private Dictionary dictionary = new Dictionary(new HashMap<String, Entry>());
-  private Entry entry1 = new Entry(new HashMap<Language, String>());
-  private Entry entry2 = new Entry(new HashMap<Language, String>());
+  public Dictionary dictionary;
+  public Entry entry1;
+  public Entry entry2;
 
 
-  @Test
-  public void canGetStringTest() {
+  @BeforeEach
+  public void setUp() {
 
-    CentralController.currSession.currLang = Language.ENGLISH;
+    CentralController controller = new CentralController();
+
+    dictionary = new Dictionary(new HashMap<String, Entry>());
+    entry1 = new Entry(new HashMap<Language, String>());
+    entry2 = new Entry(new HashMap<Language, String>());
+
+    controller.currSession.currLang = Language.ENGLISH;
 
     entry1.addString(Language.SPANISH, "Spanish word for n.");
     entry1.addString(Language.ENGLISH, "English word for n.");
     entry2.addString(Language.SPANISH, "Spanish word for x.");
     entry2.addString(Language.ENGLISH, "English word for x.");
-    dictionary.addEntry("n",entry1);
-    dictionary.addEntry("x",entry2);
+    dictionary.addEntry("n", entry1);
+    dictionary.addEntry("x", entry2);
+  }
 
+  @Test
+  /**
+   * Tests the String returned when given a language and a certain key.
+   */
+  public void canGetStringTest() {
     assertEquals("English word for n.",dictionary.getString("n"));
   }
 
+  @Test
+  /**
+   * Tests the String returned when given a language and a certain key.
+   */
+  public void canGetStringTest2() {
+    assertEquals("English word for x.", dictionary.getString("x"));
+  }
 
-
+  @Test
+  /**
+   * Tests the String returned when a given key does not exist in the Dictionary's HashMap.
+   */
+  public void keyDoesNotExist() {
+    assertEquals("", dictionary.getString("This key doesn't exist."));
+  }
 
 }

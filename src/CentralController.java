@@ -9,7 +9,7 @@ public class CentralController {
   private FileController fController;
   private Controller dController;
   //private CredentialManager credManager;
-  static Session currSession;
+  static Session currSession = new Session();
   private centralUIController uiController;
   public CentralController(){
   }

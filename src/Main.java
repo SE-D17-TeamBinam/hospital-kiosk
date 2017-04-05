@@ -5,6 +5,8 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 
 public class Main extends Application {
+    static DatabaseController dbc;
+    static DatabaseEditor dbe;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -13,6 +15,9 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
-        launch(args);
+      dbc = new DatabaseController("org.apache.derby.jdbc.EmbeddedDriver",
+          "jdbc:derby:testDB;create=true");
+      dbe = new DatabaseEditor(dbc);
+      launch(args);
     }
 }

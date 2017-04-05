@@ -1,7 +1,7 @@
 package Definitions;
 
-import Definitions.Point;
 import java.util.ArrayList;
+import org.Point;
 
 /**
  * Created by Leon Zhang on 2017/4/3.

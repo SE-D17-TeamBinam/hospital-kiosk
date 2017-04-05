@@ -2,7 +2,6 @@ package UIControllers;
 import static com.sun.javafx.sg.prism.NGCanvas.LINE_WIDTH;
 
 import Definitions.Coordinate;
-import Definitions.Point;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -24,6 +23,8 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
+import org.Point;
+
 /**
  * Created by Leon Zhang on 2017/4/1.
  */
@@ -103,11 +104,11 @@ public class MapViewController extends CentralUIController implements Initializa
   ////////////////////////
 
   // ArrayList of Nodes to maintain in memory
-  private ArrayList<Definitions.Point> points = new ArrayList<Definitions.Point>();
+  private ArrayList<org.Point> points = new ArrayList<org.Point>();
 
   // The currently selected node
-  private Definitions.Point pointFocus = null;
-  private ArrayList<Definitions.Point> nodes = new ArrayList<Definitions.Point>();
+  private org.Point pointFocus = null;
+  private ArrayList<org.Point> nodes = new ArrayList<org.Point>();
   // List of points that are currently being displayed
   // Note: "org.Point" refers to a graphical object being displayed, not a room for this project
   private ArrayList<javafx.scene.Node> currentlyDrawnNodes = new ArrayList<javafx.scene.Node>();
@@ -226,7 +227,7 @@ public class MapViewController extends CentralUIController implements Initializa
     for(int i = 0; i < count; i++){
       double xCoord = Math.random()*5000;
       double yCoord = Math.random()*2500;
-      Definitions.Point newPoint = new Definitions.Point(xCoord, yCoord, "");
+      org.Point newPoint = new org.Point(xCoord, yCoord, "");
       if(point == null){
       } else {
         newPoint.connectTo(point);

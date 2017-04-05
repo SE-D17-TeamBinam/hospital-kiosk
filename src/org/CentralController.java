@@ -1,3 +1,5 @@
+package org;
+
 import UIControllers.CentralUIController;
 import javafx.stage.Stage;
 

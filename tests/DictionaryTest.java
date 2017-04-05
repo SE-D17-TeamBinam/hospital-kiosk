@@ -1,5 +1,8 @@
 import java.util.HashMap;
-import org.junit.jupiter.api.BeforeAll;
+import org.CentralController;
+import org.Dictionary;
+import org.Entry;
+import org.Language;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -24,7 +27,7 @@ public class DictionaryTest {
     entry1 = new Entry(new HashMap<Language, String>());
     entry2 = new Entry(new HashMap<Language, String>());
 
-    controller.currSession.currLang = Language.ENGLISH;
+    //controller.currSession.currLang = Language.ENGLISH;
 
     entry1.addString(Language.SPANISH, "Spanish word for n.");
     entry1.addString(Language.ENGLISH, "English word for n.");
@@ -52,7 +55,7 @@ public class DictionaryTest {
 
   @Test
   /**
-   * Tests the String returned when a given key does not exist in the Dictionary's HashMap.
+   * Tests the String returned when a given key does not exist in the org.Dictionary's HashMap.
    */
   public void keyDoesNotExist() {
     assertEquals("", dictionary.getString("This key doesn't exist."));

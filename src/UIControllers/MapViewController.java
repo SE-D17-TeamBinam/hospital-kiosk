@@ -109,7 +109,7 @@ public class MapViewController extends CentralUIController implements Initializa
   private Definitions.Point pointFocus = null;
   private ArrayList<Definitions.Point> nodes = new ArrayList<Definitions.Point>();
   // List of points that are currently being displayed
-  // Note: "Point" refers to a graphical object being displayed, not a room for this project
+  // Note: "org.Point" refers to a graphical object being displayed, not a room for this project
   private ArrayList<javafx.scene.Node> currentlyDrawnNodes = new ArrayList<javafx.scene.Node>();
 
   // Line to provide visual feedback when drawing points
@@ -401,7 +401,7 @@ public class MapViewController extends CentralUIController implements Initializa
   ///////////////////////////
 
   // Draws points and/or node connections on the map
-  private void paintNodeComponents(){ // TODO generalize this and make it take a list of definitions.Point
+  private void paintNodeComponents(){ // TODO generalize this and make it take a list of definitions.org.Point
 
     ObservableList<javafx.scene.Node> children = ((AnchorPane) mapImage.getParent()).getChildren();
    children.removeAll(currentlyDrawnNodes);

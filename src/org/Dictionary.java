@@ -1,3 +1,5 @@
+package org;
+
 import java.util.HashMap;
 
 /**
@@ -8,7 +10,7 @@ public class Dictionary {
     HashMap<String, Entry> stringEntryMap;
 
   /**
-   * Creates a new Dictionary object.
+   * Creates a new org.Dictionary object.
    *
    * @param stringEntryMap: EntryMap stores a map of possible strings in the application and entry
    * objects that will pair the strings with the given language.
@@ -18,7 +20,7 @@ public class Dictionary {
   }
 
   /**
-   * Adds a new HashMap to the Dictionary object.
+   * Adds a new HashMap to the org.Dictionary object.
    * @param string: Contains the string of the new HashMap.
    * @param entry: Contains the entry of the new HashMap.
    */

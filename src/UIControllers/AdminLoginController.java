@@ -1,6 +1,6 @@
 package UIControllers;
 
-import CredentialManager.credentialManager;
+import CredentialManager.CredentialManager;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -15,7 +15,7 @@ import javafx.stage.Stage;
  */
 
 
-public class adminLoginController extends centralUIController implements Initializable {
+public class AdminLoginController extends centralUIController implements Initializable {
 
   /* define all ui elements */
   @FXML
@@ -39,7 +39,7 @@ public class adminLoginController extends centralUIController implements Initial
     Stage primaryStage = (Stage) AdminLogin.getScene().getWindow();
     String enteredName = AdminNameField.getText();
     String enteredPass = AdminPassField.getText();
-    credentialManager cm = new credentialManager();
+    CredentialManager cm = new CredentialManager();
     if (cm.userIsAdmin(enteredName, enteredPass)) {
       LoginError.setVisible(false);
       try {

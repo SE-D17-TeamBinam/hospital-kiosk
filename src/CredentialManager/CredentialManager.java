@@ -3,17 +3,21 @@ package CredentialManager;
 /**
  * Created by Tom on 4/3/2017.
  */
-public class credentialManager {
+public class CredentialManager {
 
   private String adminName = "admin";
   private String adminToken = "admin";
 
-  /*
-  public credentialManager(String adminName, String adminToken){
+
+  public CredentialManager(){
+
+  }
+
+  public CredentialManager(String adminName, String adminToken){
     this.adminName = adminName;
     this.adminToken = adminToken;
   }
-  */
+
 
   /**
    * Check if the hash is the same as the verified user

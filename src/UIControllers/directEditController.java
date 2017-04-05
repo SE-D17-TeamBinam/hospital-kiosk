@@ -8,7 +8,6 @@ import java.util.ResourceBundle;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
@@ -20,18 +19,15 @@ import javafx.stage.Stage;
 /**
  * Created by Leon Zhang on 4/4/2017.
  */
-public class directEditController extends centralUIController implements Initializable {
-
-  /* initialize private variables */
-  private Physician selectedHP = null;
+public class DirectEditController extends CentralUIController implements Initializable {
   private int selectedHPIndex;
   private boolean locationShown;
+  private Physician selectedHP = null;
   private ArrayList<Physician> docs;
   private ArrayList<Point> rooms;
   private ArrayList<String> roomNames;
   private ArrayList<String> docNames;
 
-  /* initialize all ui elements*/
   @FXML
   private Pane DirectEdit;
   @FXML
@@ -58,16 +54,12 @@ public class directEditController extends centralUIController implements Initial
   @Override
   public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
 
-    /** define arraylists
-     * TODO: DB people should pass the array of rooms to rooms, the array of Physicians to docs
-     */
     rooms = new ArrayList<Point>();
     docs = new ArrayList<Physician>();
     roomNames = new ArrayList<String>();
     docNames = new ArrayList<String>();
     locationShown = false;
-
-    /* tests */
+    // get list of rooms
     Point a1 = new Point(0, 0, "a");
     Point a2 = new Point(0, 0, "b");
     Point a3 = new Point(0, 0, "c");
@@ -90,37 +82,35 @@ public class directEditController extends centralUIController implements Initial
     docs.add(b4);
 
 
-    /* load all docs */
+    // load all docs
     refreshDir();
 
-    /* fill room names */
     roomNames.add("None");
     for (Point n : rooms) {
       roomNames.add(n.getName());
     }
 
-    /* when directory is changed */
+    // when select any doc
     Directory.getSelectionModel().selectedItemProperty().addListener(
         new ChangeListener<String>() {
           public void changed(ObservableValue<? extends String> ov,
               String old_val, String new_val) {
 
-            /* check if it is clicked */
             int clicked = Directory.getSelectionModel().getSelectedIndex();
             if (clicked >= 0) {
               selectedHPIndex = clicked;
               selectedHP = docs.get(selectedHPIndex);
             }
 
-            /* fill location selectors */
+            // fill location selectors
             if (!locationShown) {
               displayLoc();
               locationShown = true;
             }
-            /* refresh physician info section */
+            // set text field
             refreshInfo();
 
-            /* refresh location selectors */
+            // set location selectors
             refreshLoc();
 
           }
@@ -128,9 +118,6 @@ public class directEditController extends centralUIController implements Initial
 
   }
 
-  /**
-   * fill each location selector with all names of all rooms
-   */
   public void displayLoc () {
     Location1.setItems(FXCollections.observableList(roomNames));
     Location2.setItems(FXCollections.observableList(roomNames));
@@ -140,9 +127,6 @@ public class directEditController extends centralUIController implements Initial
     Location6.setItems(FXCollections.observableList(roomNames));
   }
 
-  /**
-   * clear each location selector
-   */
   public void clearLoc () {
     Location1.setItems(FXCollections.observableList(new ArrayList<String>()));
     Location2.setItems(FXCollections.observableList(new ArrayList<String>()));
@@ -152,9 +136,6 @@ public class directEditController extends centralUIController implements Initial
     Location6.setItems(FXCollections.observableList(new ArrayList<String>()));
   }
 
-  /**
-   * refresh the directory and docName
-   */
   public void refreshDir () {
     docNames = new ArrayList<String>();
     for (Physician doc : docs) {
@@ -165,27 +146,18 @@ public class directEditController extends centralUIController implements Initial
     Directory.setItems(FXCollections.observableList(docNames));
   }
 
-  /**
-   * refresh the info section
-   */
   public void refreshInfo () {
     LastName.setText(selectedHP.getLastName());
     FirstName.setText(selectedHP.getFirstName());
     Title.setText(selectedHP.getTitle());
   }
 
-  /**
-   * clear the info section
-   */
   public void clearInfo () {
     LastName.setText("");
     FirstName.setText("");
     Title.setText("");
   }
 
-  /**
-   * refresh the location selector
-   */
   public void refreshLoc () {
     Point temp;
     try {
@@ -226,10 +198,7 @@ public class directEditController extends centralUIController implements Initial
     }
   }
 
-  /**
-   * return the final locations selected
-   * @return the final ArrayList of Points to be saved
-   */
+
   public ArrayList<Point> finalLocs () {
     ArrayList<Point> ret = new ArrayList<Point>();
     addtoFinalLocs(ret, Location1);
@@ -241,13 +210,6 @@ public class directEditController extends centralUIController implements Initial
     return ret;
   }
 
-  /**
-   * search the Point in rooms by the name of a location selector,
-   * add that Point into an ArrayList and return it. If the name is
-   * "None", add nothing
-   * @parameter ret: the ArrayList to be returned
-   * @parameter L: the location selector to retrieve the name from
-   */
   public void addtoFinalLocs(ArrayList<Point> ret, ChoiceBox L) {
     for (Point n : rooms) {
       if (L.getValue().toString().equals("None")) {
@@ -260,9 +222,7 @@ public class directEditController extends centralUIController implements Initial
     }
   }
 
-  /**
-   * save currently editing physician to docs list and refresh the page
-   */
+
   public void save () {
     try {
       selectedHP.setFirstName(FirstName.getText());
@@ -270,6 +230,7 @@ public class directEditController extends centralUIController implements Initial
       selectedHP.setTitle(Title.getText());
       selectedHP.setLocations(finalLocs());
       // check if it's a new Physician
+      System.out.println(Integer.toString(selectedHPIndex));
       if (selectedHPIndex >= docs.size()) {
         docs.add(selectedHP);
       } else {
@@ -281,14 +242,12 @@ public class directEditController extends centralUIController implements Initial
       refreshLoc();
       refreshDir();
       Directory.getSelectionModel().select(selectedHPIndex);
+
     } catch (NullPointerException e) {
       System.out.println("Nothing is selected");
     }
   }
 
-  /**
-   * cancel an edit before saving
-   */
   public void cancel () {
     try {
       refreshInfo();
@@ -298,9 +257,6 @@ public class directEditController extends centralUIController implements Initial
     }
   }
 
-  /**
-   * create an empty physician
-   */
   public void create () {
     Directory.getSelectionModel().select(-1);
     long newPID = docs.get(docs.size() - 1).getID() + 1;
@@ -314,21 +270,14 @@ public class directEditController extends centralUIController implements Initial
     }
   }
 
-  /**
-   * delete a physician
-   */
   public void delete () {
     docs.remove(selectedHP);
     refreshDir();
     clearLoc();
     clearInfo();
     locationShown = false;
-    selectedHP = null;
   }
 
-  /**
-   * go back to the previous screen
-   */
   public void back () {
     Stage primaryStage = (Stage) DirectEdit.getScene().getWindow();
     try {
@@ -338,9 +287,7 @@ public class directEditController extends centralUIController implements Initial
       e.printStackTrace();
     }
   }
-  /**
-   * logoff from admin screens and go back to main menu
-   */
+
   public void logoff () {
     Stage primaryStage = (Stage) DirectEdit.getScene().getWindow();
     try {

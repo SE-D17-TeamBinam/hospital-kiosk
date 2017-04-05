@@ -11,7 +11,6 @@ public class Point {
   private double yCoord;
   private String name;
   private int floor;
-  private int id;
 
   ArrayList<Point> connections = new ArrayList<Point>();
 
@@ -35,6 +34,19 @@ public class Point {
   public void connectTo(Point node) {
     node.getNeighbors().add(this);
     this.connections.add(node);
+  }
+
+  public void severFrom(Point node){
+    if(connections.contains(node)){
+      node.getNeighbors().remove(this);
+      connections.remove(node);
+    }
+  }
+
+  public void severConnections(){
+    for(int i = 0; i < connections.size(); i++){
+      connections.get(i).severFrom(this);
+    }
   }
 
   public double getXCoord() {

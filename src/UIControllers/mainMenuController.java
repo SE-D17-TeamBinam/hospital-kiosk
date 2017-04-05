@@ -18,6 +18,9 @@ public class mainMenuController extends centralUIController implements Initializ
   public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
   }
 
+  /**
+   * go to the map view screen
+   */
   public void gotoMap () {
     Stage primaryStage = (Stage) MainMenu.getScene().getWindow();
     try {
@@ -28,6 +31,9 @@ public class mainMenuController extends centralUIController implements Initializ
     }
   }
 
+  /**
+   * go to the search menu screen (contains user directory)
+   */
   public void gotoSearch () {
     Stage primaryStage = (Stage) MainMenu.getScene().getWindow();
     try {
@@ -36,6 +42,9 @@ public class mainMenuController extends centralUIController implements Initializ
     }
   }
 
+  /**
+   * go to admin login screen
+   */
   public void gotoAdmin () {
     Stage primaryStage = (Stage) MainMenu.getScene().getWindow();
     try {

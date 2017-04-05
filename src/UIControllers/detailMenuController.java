@@ -11,17 +11,17 @@ import javafx.stage.Stage;
  */
 
 public class detailMenuController extends centralUIController implements Initializable {
-  // define all ui elements
+  /* define all ui elements */
   @FXML
   private Pane DetailMenu; // Value injected by FXMLLoader
 
-  private Stage primaryStage = (Stage) DetailMenu.getScene().getWindow();
 
   @Override
   public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
   }
 
   public void quit () {
+    Stage primaryStage = (Stage) DetailMenu.getScene().getWindow();
     try {
       restartUI(primaryStage);
     } catch (Exception e) {
@@ -31,6 +31,7 @@ public class detailMenuController extends centralUIController implements Initial
   }
 
   public void back () {
+    Stage primaryStage = (Stage) DetailMenu.getScene().getWindow();
     try {
       loadScene(primaryStage, "/SearchMenu.fxml");
     } catch (Exception e) {
@@ -40,6 +41,7 @@ public class detailMenuController extends centralUIController implements Initial
   }
 
   public void gotoMap () {
+    Stage primaryStage = (Stage) DetailMenu.getScene().getWindow();
     try {
       loadScene(primaryStage, "/MapScene.fxml");
     } catch (Exception e) {

@@ -17,7 +17,7 @@ import javafx.stage.Stage;
 
 public class adminLoginController extends centralUIController implements Initializable {
 
-  // define all ui elements
+  /* define all ui elements */
   @FXML
   private Pane AdminLogin;
   @FXML
@@ -31,6 +31,10 @@ public class adminLoginController extends centralUIController implements Initial
   public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
   }
 
+  /**
+   * checks login credential. If pass, log into directory editor; if fail, show an error message
+   * TODO: throw an exception in the future.
+   */
   public void login () {
     Stage primaryStage = (Stage) AdminLogin.getScene().getWindow();
     String enteredName = AdminNameField.getText();
@@ -49,6 +53,9 @@ public class adminLoginController extends centralUIController implements Initial
     }
   }
 
+  /**
+   * go back to the main menu
+   */
   public void back () {
     Stage primaryStage = (Stage) AdminLogin.getScene().getWindow();
     try {

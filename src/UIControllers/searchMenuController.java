@@ -26,10 +26,14 @@ public class searchMenuController extends centralUIController implements Initial
 
   @Override
   public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
-    // actions of each ui element
-    ArrayList<Point> rooms = new ArrayList<Point>();
+    /**
+     * definition of Physician array
+     * TODO: DB people can pass their array of physicians to docs
+     */
     ArrayList<Physician> docs = new ArrayList<Physician>();
-    // get list of rooms
+
+    /* Tests */
+    ArrayList<Point> rooms = new ArrayList<Point>();
     Point a1 = new Point(0, 0, "a");
     Point a2 = new Point(0, 0, "b");
     Point a3 = new Point(0, 0, "c");
@@ -53,6 +57,9 @@ public class searchMenuController extends centralUIController implements Initial
     updateDirectory(docs);
   }
 
+  /**
+   * display an ArrayList of Physicians in directory screen
+   */
   public void updateDirectory (ArrayList<Physician> HCs){
     ArrayList<String> list = new ArrayList<String>();
     for (Physician doctor : HCs) {
@@ -67,6 +74,9 @@ public class searchMenuController extends centralUIController implements Initial
     SearchDirectory.setItems(listHC);
   }
 
+  /**
+   * go back to the main menu
+   */
   public void back () {
     Stage primaryStage = (Stage) SearchDirectory.getScene().getWindow();
     try {
@@ -77,6 +87,9 @@ public class searchMenuController extends centralUIController implements Initial
     }
   }
 
+  /**
+   * clear the search field
+   */
   public void clear () {
     SearchField.clear();
   }

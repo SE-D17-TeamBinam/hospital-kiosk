@@ -158,6 +158,8 @@ public class DatabaseEditor {
         "insert into Point (x,y,cost,pid) values (\"" + x + "\",\""
             + y + "\",\"" + cost + "\",\"" + id + "\" ); \n");
 
+    //add method to put node in location
+
     /*
     int i ;
     ArrayList<Point> pl = point.Neighbors;

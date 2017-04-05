@@ -2,6 +2,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import org.*;
+
 /**
  * Created by evan on 3/25/17.
  * This Object will add, remove and edit our hospital database
@@ -223,7 +225,7 @@ public class DatabaseEditor {
     while (res.next()) {
       int floor = res.getInt("PID");
       String name = res.getString("NAME");
-      String id = res.getString("PID");
+      int id = res.getInt("PID");
       int x = res.getInt("x");
       int y = res.getInt("y");
       int cost =res.getInt("cost");

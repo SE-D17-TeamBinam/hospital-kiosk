@@ -1,5 +1,6 @@
 //import Definitions.Point;
 import java.util.ArrayList;
+import org.*;
 
 /**
  * Created by Leon Zhang on 2017/4/3.
@@ -18,6 +19,8 @@ public class Physician {
     this.PID = PID;
     this.locations = locations;
   }
+
+
 
   public String getFirstName () {
     return this.firstName;

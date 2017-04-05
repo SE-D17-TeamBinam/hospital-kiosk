@@ -14,15 +14,15 @@ import java.util.ArrayList;
  */
 public class Point {
 
-  int xCoord;    //X coordinate
-  int yCoord;    //Y coordinate
-  String name;  //Name of the room
-  int id;      //Unique Identifier
-  int floor;
+  public int xCoord;    //X coordinate
+  public int yCoord;    //Y coordinate
+  public String name;  //Name of the room
+  public int id;      //Unique Identifier
+  public int floor;
   public ArrayList<Point> neighbors;
   //Attributes For A* only below.
   Point parent;
-  int cost;
+  public int cost;
 
 
   //Constructor

@@ -36,16 +36,16 @@ public class DatabaseEditor {
     return true;
   }
 
-  ArrayList<Physician> getAllPhysicians() throws SQLException{
+  ArrayList<Physician> getAllPhysicians() throws SQLException {
     ArrayList<Physician> physicians = new ArrayList<Physician>();
     ResultSet res = dbc.send_Command("select * from physician").get(0);
-    while (res.next()){
+    while (res.next()) {
       String first_name = res.getString("FIRST_NAME");
       String last_name = res.getString("LAST_NAME");
       String title = res.getString("TITLE");
       long pid = res.getLong("PID");
 
-      Physician p = new Physician(first_name,last_name,title,pid,new ArrayList<Point>());
+      Physician p = new Physician(first_name, last_name, title, pid, new ArrayList<Point>());
       physicians.add(p);
     }
     return physicians;
@@ -54,7 +54,6 @@ public class DatabaseEditor {
   ///////////////////////////
   //////// Location /////////
   ///////////////////////////
-
 
   ///////////////////////////
   //// Location - Service ///

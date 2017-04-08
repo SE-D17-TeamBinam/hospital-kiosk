@@ -18,7 +18,7 @@ public class Point {
   String name;  //Name of the room
   int id;      //Unique Identifier
   int floor;
-  public ArrayList<Point> neighbors = new ArrayList<>();
+  public ArrayList<Integer> neighbors = new ArrayList<>();
   //Attributes For A* only below.
   Point parent;
   int cost;
@@ -35,7 +35,7 @@ public class Point {
     this.yCoord = (int) yCoord;
     this.floor = floor;
   }
-  public Point(int xCoord, int yCoord, String name, int id, ArrayList <Point> new_neighbors, int floor){
+  public Point(int xCoord, int yCoord, String name, int id, ArrayList <Integer> new_neighbors, int floor){
   this.xCoord = xCoord;
   this.yCoord = yCoord;
   this.name = name;
@@ -48,11 +48,15 @@ public class Point {
 
   //Methods
   public void connectTo(Point node) {
-    node.getNeighbors().add(this);
-    this.neighbors.add(node);
+    node.getNeighbors().add(this.getId());
+    this.neighbors.add(node.getId());
   }
-  public ArrayList<Point> getNeighbors() {
-    return neighbors;
+  public ArrayList<Integer> getNeighbors() {
+    return this.neighbors;
+  }
+
+  public void setNeighbors(ArrayList<Integer> neighbors) {
+     this.neighbors = neighbors;
   }
 
   public void addParent(Point padre){
@@ -80,6 +84,14 @@ public class Point {
   public int getXCoord(){return this.xCoord;}
 
   public int getYCoord(){return this.yCoord;}
+
+  public int getId(){
+    return this.id;
+  }
+
+  public int getCost(){
+    return this.cost;
+  }
 
   public void setYCoord(double yCoord){
     this.yCoord = (int) yCoord;

@@ -10,10 +10,10 @@ public class Physician {
   private String firstName;
   private String lastName;
   private String title;
-  private long PID;
-  private ArrayList<Point> locations;
+  private int PID;
+  private ArrayList<Integer> locations;
 
-  public Physician(String firstName, String lastName, String title, long PID, ArrayList<Point> locations) {
+  public Physician(String firstName, String lastName, String title, int PID, ArrayList<Integer> locations) {
     this.firstName = firstName;
     this.lastName = lastName;
     this.title = title;
@@ -33,7 +33,7 @@ public class Physician {
     return this.title;
   }
 
-  public ArrayList<Point> getLocations () {
+  public ArrayList<Integer> getLocations () {
     return this.locations;
   }
 
@@ -49,11 +49,11 @@ public class Physician {
     this.title = newTitle;
   }
 
-  public void setLocations (ArrayList<Point> newLocations) {
+  public void setLocations (ArrayList<Integer> newLocations) {
     this.locations = newLocations;
   }
 
-  public long getID () {
+  public int getID () {
     return this.PID;
   }
 }

@@ -18,25 +18,25 @@ public class DataControllerTest {
 
   DataController data = new DataController(null);
   Point p1, p2, p3, p4, p5;
-  ArrayList<Point> neigh = new ArrayList<>();
-  ArrayList<Point> neigh2 = new ArrayList<>();
-  ArrayList<Point> neigh3 = new ArrayList<>();
+  ArrayList<Integer> neigh = new ArrayList<>();
+  ArrayList<Integer> neigh2 = new ArrayList<>();
+  ArrayList<Integer> neigh3 = new ArrayList<>();
 
   @BeforeEach
   public void setup(){
     p1 = new Point(42, 50, "Begin", 0, neigh, 4);
     p2 = new Point(0, -5, "2t", 1, neigh2, 4);
     p3 = new Point(12, 30, "3", 2, neigh3, 5);
-    p4 = new Point(5, 30, "end", 3, new ArrayList<Point>(), 5);
-    p5 = new Point(5, 30, "no connection", 4, new ArrayList<Point>(), 5);
-    p1.neighbors.add(p2);
-    p1.neighbors.add(p3);
-    p2.neighbors.add(p3);
-    p2.neighbors.add(p1);
-    p3.neighbors.add(p1);
-    p3.neighbors.add(p4);
-    p3.neighbors.add(p2);
-    p4.neighbors.add(p3);
+    p4 = new Point(5, 30, "end", 3, new ArrayList<Integer>(), 5);
+    p5 = new Point(5, 30, "no connection", 4, new ArrayList<Integer>(), 5);
+    p1.neighbors.add(p2.getId());
+    p1.neighbors.add(p3.getId());
+    p2.neighbors.add(p3.getId());
+    p2.neighbors.add(p1.getId());
+    p3.neighbors.add(p1.getId());
+    p3.neighbors.add(p4.getId());
+    p3.neighbors.add(p2.getId());
+    p4.neighbors.add(p3.getId());
   }
 
   @Test

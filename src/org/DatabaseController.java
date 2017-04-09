@@ -12,60 +12,62 @@ import java.util.ArrayList;
  * Registers, Connects to, and sends commands to a database
  * Created by Evan on 4/3/2017.
  */
-public class DatabaseController{
+public class DatabaseController {
+
   private Connection conn = null;
   private Statement stmt = null;
   private String url = "";
   private String driver = "";
 
-  DatabaseController(String _driver, String _url){
+  public DatabaseController(String _driver, String _url) {
     this.url = _url;
-    this.driver =  _driver;
+    this.driver = _driver;
     try {
       this.registerDriver();
       this.connect();
-    }
-    catch (SQLException e){
+    } catch (SQLException e) {
       e.printStackTrace();
       System.out.println("SQL Exception Occurred, check that the url is correct");
-    }
-    catch (ClassNotFoundException e){
+    } catch (ClassNotFoundException e) {
       e.printStackTrace();
-      System.out.println("Class Not Found Exception Occurred, check that the driver is correct and installed");
+      System.out.println(
+          "Class Not Found Exception Occurred, check that the driver is correct and installed");
     }
   }
 
-  public String[] Parser(String commands){
+  public String[] Parser(String commands) {
     String[] SList;
     SList = commands.split(";");
     return SList;
   }
 
-  public ArrayList<ResultSet> send_Command(String commands){
+  public ArrayList<ResultSet> send_Command(String commands) {
     String command;
     String[] cList = this.Parser(commands);
-    ArrayList<ResultSet> listrs =new ArrayList<ResultSet>();
+    ArrayList<ResultSet> listrs = new ArrayList<ResultSet>();
     int i;
     ResultSet rs;
-    for(i = 0;i < cList.length;i++) {
+    for (i = 0; i < cList.length; i++) {
       command = cList[i];
-      System.out.println("command:" + command);
-      try {
-        stmt = conn.createStatement();
-        rs = stmt.executeQuery(command);
-        listrs.add(rs);
-        //return rs;
-
-      } catch (SQLException e) {
-        System.out.println("Error Querying, Trying Execute...");
+      if (command.length() > 2) {
+        System.out.println("command:" + command);
         try {
-          stmt.execute(command);
-          //listrs.add(rs);
-          System.out.println("Executed Successfully");
+          stmt = conn.createStatement();
+          rs = stmt.executeQuery(command);
+          listrs.add(rs);
+          //return rs;
 
-        } catch (SQLException e2) {
-          e.printStackTrace();
-          System.out.println("Query Error!");
+        } catch (SQLException e) {
+          System.out.println("Error Querying, Trying Execute...");
+          try {
+            stmt.execute(command);
+            //listrs.add(rs);
+            System.out.println("Executed Successfully");
+
+          } catch (SQLException e2) {
+            e.printStackTrace();
+            System.out.println("Query Error!");
+          }
         }
       }
 
@@ -73,20 +75,21 @@ public class DatabaseController{
     return listrs;
   }
 
-  private boolean registerDriver() throws ClassNotFoundException{
+  private boolean registerDriver() throws ClassNotFoundException {
     Class.forName(driver);
     return true;
   }
 
-  private boolean connect() throws SQLException{
+  private boolean connect() throws SQLException {
     conn = DriverManager.getConnection(url);
     return true;
   }
 
   @Override
-  public String toString(){
-    if (url.length() > 0)
+  public String toString() {
+    if (url.length() > 0) {
       return "DatabaseController connected to " + url;
+    }
     return "Unconnected DatabaseController";
   }
 

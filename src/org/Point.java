@@ -23,12 +23,12 @@ public class Point {
   Point parent;
   int cost;
 
-    //Constructor
-    public Point(double xCoord, double yCoord, String name) {
-      this.xCoord = (int) xCoord;
-      this.yCoord = (int) yCoord;
-      this.name = name;
-    }
+  //Constructor
+  public Point(double xCoord, double yCoord, String name) {
+    this.xCoord = (int) xCoord;
+    this.yCoord = (int) yCoord;
+    this.name = name;
+  }
 
   public Point(double xCoord, double yCoord, int floor){
     this.xCoord = (int) xCoord;
@@ -36,14 +36,14 @@ public class Point {
     this.floor = floor;
   }
   public Point(int xCoord, int yCoord, String name, int id, ArrayList <Point> new_neighbors, int floor){
-  this.xCoord = xCoord;
-  this.yCoord = yCoord;
-  this.name = name;
-  this.id = id;
-  this.parent = null;
-  this.neighbors = new_neighbors;
-  this.cost = 0;
-  this.floor = floor;
+    this.xCoord = xCoord;
+    this.yCoord = yCoord;
+    this.name = name;
+    this.id = id;
+    this.parent = null;
+    this.neighbors = new_neighbors;
+    this.cost = 0;
+    this.floor = floor;
   }
 
   //Methods
@@ -56,8 +56,8 @@ public class Point {
   }
 
   public void addParent(Point padre){
-        this.parent = padre;
-    }
+    this.parent = padre;
+  }
 
   public void setName(String newName) {
     name = newName;

@@ -293,7 +293,7 @@ public class DirectEditController extends CentralUIController implements Initial
 
   public void create () {
     Directory.getSelectionModel().select(-1);
-    long newPID = docs.get(docs.size() - 1).getID() + 1;
+    int newPID = docs.get(docs.size() - 1).getID() + 1;
     selectedHP = new Physician("", "", "", newPID, new ArrayList<Point>());
     selectedHPIndex = docs.size();
     refreshInfo();

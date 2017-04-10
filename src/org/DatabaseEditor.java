@@ -31,7 +31,7 @@ public class DatabaseEditor implements DatabaseInterface{
   }
 
   public boolean addPhysician(int PID, String first_name, String last_name, String title,
-      ArrayList<Integer> array_points) {
+      ArrayList<Point> array_points) {
     dbc.send_Command(
         "insert into physician (pid,first_name, last_name, title) values (" + PID + ",'"
             + first_name + "','"
@@ -39,7 +39,7 @@ public class DatabaseEditor implements DatabaseInterface{
 
     int i;
     for (i = 0; i < array_points.size(); i++) {
-      this.addPhysicianLocation(PID, array_points.get(i));
+      this.addPhysicianLocation(PID, array_points.get(i).id);
     }
     return true;
   }
@@ -60,7 +60,7 @@ public class DatabaseEditor implements DatabaseInterface{
         String title = res.getString("TITLE");
         int new_pid = res.getInt("PID");
 
-        my_p = new Physician(first_name, last_name, title, pid, new ArrayList<Integer>());
+        my_p = new Physician(first_name, last_name, title, pid, new ArrayList<Point>());
         //physicians.add(p);
 
       }
@@ -75,10 +75,10 @@ public class DatabaseEditor implements DatabaseInterface{
       ResultSet res2 = dbc.send_Command("select * from physician_location where pid_ph = " + pid)
           .get(0);
 
-      ArrayList<Integer> my_locs = new ArrayList<Integer>();
+      ArrayList<Point> my_locs = new ArrayList<Point>();
       while (res2.next()) {
         int new_pid2 = res2.getInt("PID_po");
-        my_locs.add(new_pid2);
+        my_locs.add(get_point(new_pid2));
 
       }
       res2.close();
@@ -163,7 +163,8 @@ public class DatabaseEditor implements DatabaseInterface{
   /////////Point/////////
   //////////////////////
 
-  public boolean addPoint(Point point) {
+  public boolean addPoint(Point realpoint) {
+    FakePoint point = new FakePoint(realpoint);
     int cost = point.getCost();
     int x = point.getXCoord();
     int y = point.getYCoord();
@@ -175,18 +176,26 @@ public class DatabaseEditor implements DatabaseInterface{
     dbc.send_Command(
         "insert into Point (x,y,cost,pid,floor,name) values (" + x + ","
             + y + "," + cost + "," + id + "," + floor + ",'" + name + "'); \n");
+    return true;
+  }
+  public boolean addPoint(FakePoint point) {
+    int cost = point.getCost();
+    int x = point.getXCoord();
+    int y = point.getYCoord();
+    int id = point.getId();
+    int floor = point.getFloor();
+    String name = point.getName();
+    ArrayList<Integer> neighbors = point.getNeighbors();
 
-    //add instructions to put node in location
-
-    //name = point.name.replaceAll("\\s+","");
-    //this.addLocation(name,"N",floor);
-    //this.addPointLocation(name,Integer.parseInt(id));
-
+    dbc.send_Command(
+        "insert into Point (x,y,cost,pid,floor,name) values (" + x + ","
+            + y + "," + cost + "," + id + "," + floor + ",'" + name + "'); \n");
     return true;
   }
 
 
-  public boolean removePoint(Point point) {
+  public boolean removePoint(Point realpoint) {
+    FakePoint point = new FakePoint(realpoint);
     int cost = point.getCost();
     int x = point.getXCoord();
     int y = point.getYCoord();
@@ -200,7 +209,11 @@ public class DatabaseEditor implements DatabaseInterface{
   }
 
 
-  public boolean update_points(ArrayList<Point> al) {
+  public boolean update_points(ArrayList<Point> rpal) {
+    ArrayList<FakePoint> al = new ArrayList<FakePoint>();
+    for (int q = 0; q < rpal.size(); q++){
+      al.add(new FakePoint(rpal.get(q)));
+    }
     dbc.send_Command("truncate table Point;");
     int i;
     for (i = 0; i < al.size(); i++) {
@@ -211,7 +224,7 @@ public class DatabaseEditor implements DatabaseInterface{
     int k, l;
     for (k = 0; k < al.size(); k++) {
       //this.addPoint(al.get(i));
-      Point point = al.get(k);
+      FakePoint point = al.get(k);
       ArrayList<Integer> neighbor_ids = point.getNeighbors();
       for (l = 0; l < neighbor_ids.size(); l++) {
         this.addNeighbor(point.getId(), neighbor_ids.get(l));
@@ -222,8 +235,8 @@ public class DatabaseEditor implements DatabaseInterface{
     return true;
   }
 
-  public Point get_point(int my_pid) {
-    Point my_point = null;
+  public FakePoint get_point(int my_pid) {
+    FakePoint my_point = null;
     ResultSet res1 = dbc.send_Command("select * from point where pid = " + my_pid).get(0);
     int c = 0;
     try {
@@ -241,7 +254,7 @@ public class DatabaseEditor implements DatabaseInterface{
         int y = res1.getInt("y");
         int cost = res1.getInt("cost");
 
-        my_point = new Point(x, y, name, pid, new ArrayList<Integer>(), floor);
+        my_point = new FakePoint(x, y, name, pid, new ArrayList<Integer>(), floor);
 
         ArrayList<Integer> neighbor_ids = new ArrayList<Integer>();
         ResultSet res4 = dbc.send_Command(
@@ -272,16 +285,47 @@ public class DatabaseEditor implements DatabaseInterface{
 
 
   public ArrayList<Point> getAllPoints() throws SQLException {
-    ArrayList<Point> points = new ArrayList<Point>();
+    ArrayList<FakePoint> fakepoints = new ArrayList<FakePoint>();
     ResultSet res = dbc.send_Command("select pid from point").get(0);
-    Point new_point;
+    FakePoint new_point;
     while (res.next()) {
       int pid = res.getInt("PID");
       new_point = get_point(pid);
-      points.add(new_point);
+      fakepoints.add(new_point);
     }
     res.close();
-    return points;
+    //Now convert to real
+    ArrayList<Point> ret = new ArrayList<Point>();
+    for (int i = 0; i < fakepoints.size(); i++){
+      ret.add(fakepoints.get(i).toRealPoint());
+    }
+    for (int i = 0; i < ret.size(); i++){
+      ArrayList<Integer> currentNeighbors = findFakePoint(ret.get(i),fakepoints).getNeighbors();
+      for (int j = 0; j < currentNeighbors.size(); j++){
+        ret.get(i).neighbors.add(findRealPoint(currentNeighbors.get(j),ret));
+      }
+
+    }
+
+    return ret;
+  }
+
+
+  private FakePoint findFakePoint(Point p, ArrayList<FakePoint> fps){
+    for (int i = 0; i < fps.size(); i++){
+      if (p.id == fps.get(i).getId()){
+        return fps.get(i)
+      }
+    }
+    return null;
+  }
+  private Point findRealPoint(int p, ArrayList<Point> pts){
+    for (int i = 0; i < pts.size(); i++){
+      if (p == pts.get(i).id){
+        return pts.get(i);
+      }
+    }
+    return null;
   }
 
   //////////////////////

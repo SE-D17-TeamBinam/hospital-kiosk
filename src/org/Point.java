@@ -18,50 +18,46 @@ public class Point {
   String name;  //Name of the room
   int id;      //Unique Identifier
   int floor;
-  public ArrayList<Integer> neighbors = new ArrayList<>();
+  public ArrayList<Point> neighbors = new ArrayList<>();
   //Attributes For A* only below.
   Point parent;
   int cost;
 
-    //Constructor
-    public Point(double xCoord, double yCoord, String name) {
-      this.xCoord = (int) xCoord;
-      this.yCoord = (int) yCoord;
-      this.name = name;
-    }
+  //Constructor
+  public Point(double xCoord, double yCoord, String name) {
+    this.xCoord = (int) xCoord;
+    this.yCoord = (int) yCoord;
+    this.name = name;
+  }
 
   public Point(double xCoord, double yCoord, int floor){
     this.xCoord = (int) xCoord;
     this.yCoord = (int) yCoord;
     this.floor = floor;
   }
-  public Point(int xCoord, int yCoord, String name, int id, ArrayList <Integer> new_neighbors, int floor){
-  this.xCoord = xCoord;
-  this.yCoord = yCoord;
-  this.name = name;
-  this.id = id;
-  this.parent = null;
-  this.neighbors = new_neighbors;
-  this.cost = 0;
-  this.floor = floor;
+  public Point(int xCoord, int yCoord, String name, int id, ArrayList <Point> new_neighbors, int floor){
+    this.xCoord = xCoord;
+    this.yCoord = yCoord;
+    this.name = name;
+    this.id = id;
+    this.parent = null;
+    this.neighbors = new_neighbors;
+    this.cost = 0;
+    this.floor = floor;
   }
 
   //Methods
   public void connectTo(Point node) {
-    node.getNeighbors().add(this.getId());
-    this.neighbors.add(node.getId());
+    node.getNeighbors().add(this);
+    this.neighbors.add(node);
   }
-  public ArrayList<Integer> getNeighbors() {
-    return this.neighbors;
-  }
-
-  public void setNeighbors(ArrayList<Integer> neighbors) {
-     this.neighbors = neighbors;
+  public ArrayList<Point> getNeighbors() {
+    return neighbors;
   }
 
   public void addParent(Point padre){
-        this.parent = padre;
-    }
+    this.parent = padre;
+  }
 
   public void setName(String newName) {
     name = newName;
@@ -84,14 +80,6 @@ public class Point {
   public int getXCoord(){return this.xCoord;}
 
   public int getYCoord(){return this.yCoord;}
-
-  public int getId(){
-    return this.id;
-  }
-
-  public int getCost(){
-    return this.cost;
-  }
 
   public void setYCoord(double yCoord){
     this.yCoord = (int) yCoord;
